@@ -251,7 +251,8 @@ post '/dial' do
 
 
     response = Twilio::TwiML::Response.new do |r|
-        # outboudn dialing (from client) must have a :callerId    
+        # outboudn dialing (from client) must have a :callerId 
+        # Yet to Recording feature and Callduration tracking
         r.Dial :callerId => dial_id do |d|
           d.Number number
         end
