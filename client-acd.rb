@@ -193,7 +193,8 @@ post '/voice' do
             r.Say("Please wait for the next availible agent ")
             r.Enqueue(dialqueue)
         else      #send to best agent   
-            r.Dial(:timeout=>"10", :action=>"/handledialcallstatus", :callerId => callerid)  do |d|
+           # r.Dial(:timeout=>"10", :action=>"/handledialcallstatus", :callerId => callerid)  do |d|
+           r.Dial(:timeout=>"10",:record=>"record-from-answer", :callerId => callerid, :method => "GET", :action=>"http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/services/apexrest/TwilioCalls/TouchPoint?FromNumber=#{callerid}")  do |d| 
                 logger.debug("dialing client #{client_name}")
 
                 agentinfo = { _id: sid, agent: client_name, status: "Ringing" }
