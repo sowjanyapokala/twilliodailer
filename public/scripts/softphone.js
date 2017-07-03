@@ -1,4 +1,5 @@
 // Page loaded
+//added comment
 $(function() {
 
     // ** Application container ** //
