@@ -256,7 +256,7 @@ post '/dial' do
         # Yet to Recording feature and Callduration tracking 
        # r.Dial :callerId => dial_id do |d|
         r.Dial(:record=>"record-from-answer", :callerId => dial_id, :method => "GET", :action=>"http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/services/apexrest/TwilioCalls/TouchPoint?ToNumber=#{number}")  do |d|
-          d.Number :url=>"http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/GatherDigits"  number
+          d.Number number
         end
     end
     puts response.text
