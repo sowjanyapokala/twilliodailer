@@ -255,7 +255,7 @@ post '/dial' do
         # outboudn dialing (from client) must have a :callerId 
         # Yet to Recording feature and Callduration tracking 
        # r.Dial :callerId => dial_id do |d|
-        r.Dial(:record=>"record-from-answer", :callerId => dial_id, :method => "GET", :action=>"http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/services/apexrest/TwilioCalls/TouchPoint?ToNumber=#{number}")  do |d|
+        r.Dial(:record=>"record-from-answer", :callerId => dial_id, :ifMachine="Continue", :method => "GET", :action=>"http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/services/apexrest/TwilioCalls/TouchPoint?ToNumber=#{number}")  do |d|
           d.Number number
         end
     end
