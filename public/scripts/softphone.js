@@ -118,9 +118,9 @@ $(function() {
         $("#action-buttons > .mute").show();
 
         //can not hold outbound calls, so disable this
-        if (SP.calltype == "Inbound") {
+       // if (SP.calltype == "Inbound") {
             $("#action-buttons > .hold").show();
-        }
+       // }
 
         $("#action-buttons > .hangup").show();
         $('div.agent-status').show();
