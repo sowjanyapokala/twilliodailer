@@ -358,6 +358,7 @@ $(function() {
         console.dir(conn);
         var  status = "";
         var callSid = conn.parameters.CallSid;
+        console.log("callSid------>" + callSid);
         var callNum = null;
         if (conn.parameters.From) {
           callNum = conn.parameters.From;
