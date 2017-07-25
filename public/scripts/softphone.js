@@ -360,6 +360,7 @@ $(function() {
         var callSid = conn.parameters.CallSid;
         console.log("callSid------>" + callSid);
         console.log("connectingforcallsid...");
+        alert("cleanednumber = " + callSid);  
         var callNum = null;
         if (conn.parameters.From) {
           callNum = conn.parameters.From;
