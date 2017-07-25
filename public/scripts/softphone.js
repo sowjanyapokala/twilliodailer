@@ -98,6 +98,7 @@ $(function() {
         $("#action-buttons > .hold").hide();
         $("#action-buttons > .unhold").hide();
         $("#action-buttons > .hangup").hide();
+        $("#action-buttons > .Drop VoiceMail").hide();
         $('div.agent-status').hide();
         $("#number-entry > input").val("");
     }
@@ -109,6 +110,7 @@ $(function() {
         $("#action-buttons > .hold").hide();
         $("#action-buttons > .unhold").hide();
         $("#action-buttons > .hangup").hide();
+        $("#action-buttons > .Drop VoiceMail").hide();
     }
 
     SP.functions.setOnCallState = function() {
@@ -116,6 +118,7 @@ $(function() {
         $("#action-buttons > .answer").hide();
         $("#action-buttons > .call").hide();
         $("#action-buttons > .mute").show();
+        $("#action-buttons > .Drop VoiceMail").hide();
 
         //can not hold outbound calls, so disable this
        // if (SP.calltype == "Inbound") {
