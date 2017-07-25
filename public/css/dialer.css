@@ -265,7 +265,7 @@ input {
   border-radius: 0 0 2px 2px;
 }
 
-#action-buttons .hold, #action-buttons .unhold, #action-buttons .mute, #action-buttons .Drop VoiceMail {
+#action-buttons .hold, #action-buttons .unhold, #action-buttons .mute, #action-buttons .DropVoiceMail {
   color: #444;
   width: 50%;
   font-size: 14px;
@@ -282,7 +282,7 @@ input {
     inset -1px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
-.mute, .Drop VoiceMail {
+.mute, .DropVoiceMail {
   border-radius: 0 0 0 2px;
 }
 
