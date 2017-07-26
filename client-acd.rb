@@ -341,7 +341,6 @@ post '/voicemail' do
     customer_call.update(:url => "#{request.base_url}/hold",
                  :method => "POST", :Status => "completed")  
     puts customer_call.to
-    return callsid
 end
 
 post '/request_hold' do
