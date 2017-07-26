@@ -98,7 +98,7 @@ $(function() {
         $("#action-buttons > .hold").hide();
         $("#action-buttons > .unhold").hide();
         $("#action-buttons > .hangup").hide();
-        $("#action-buttons > .Drop VoiceMail").hide();
+        $("#action-buttons > .voicemail").hide();
         $('div.agent-status').hide();
         $("#number-entry > input").val("");
     }
@@ -110,7 +110,7 @@ $(function() {
         $("#action-buttons > .hold").hide();
         $("#action-buttons > .unhold").hide();
         $("#action-buttons > .hangup").hide();
-        $("#action-buttons > .Drop VoiceMail").hide();
+        $("#action-buttons > .voicemail").hide();
     }
 
     SP.functions.setOnCallState = function() {
@@ -118,12 +118,12 @@ $(function() {
         $("#action-buttons > .answer").hide();
         $("#action-buttons > .call").hide();
         $("#action-buttons > .mute").show();
-        $("#action-buttons > .Drop VoiceMail").hide();
+        $("#action-buttons > .voicemail").show();
 
         //can not hold outbound calls, so disable this
-       // if (SP.calltype == "Inbound") {
+        if (SP.calltype == "Inbound") {
             $("#action-buttons > .hold").show();
-       // }
+        }
 
         $("#action-buttons > .hangup").show();
         $('div.agent-status').show();
@@ -363,7 +363,7 @@ $(function() {
         var callSid = conn.parameters.CallSid;
         console.log("callSid------>" + callSid);
         console.log("connectingforcallsid...");
-        alert("cleanednumber = " + callSid);  
+     // alert("cleanednumber = " + callSid);  
         var callNum = null;
         if (conn.parameters.From) {
           callNum = conn.parameters.From;
