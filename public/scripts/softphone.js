@@ -275,6 +275,17 @@ $(function() {
     $("#action-buttons > button.hangup").click( function( ) {
       Twilio.Device.disconnectAll();
     });
+    
+     $("#action-buttons > button.voicemail").click( function( ) {
+         
+         $.post("/voicemail", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
+             //Todo: handle errors
+             //Todo: change status in future
+             //SP.functions.attachUnHold(conn, data);
+
+          });
+      
+    });
 
     // Wire the ready / not ready buttons up to the server-side status change functions
     $("#agent-status-controls > button.ready").click( function( ) {
