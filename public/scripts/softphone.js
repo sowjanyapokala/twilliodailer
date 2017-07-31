@@ -277,7 +277,7 @@ $(function() {
     });
     
      $("#action-buttons > button.voicemail").click( function( ) {
-         alert("Test Button Click");
+         alert("VoiceMail");
          $.post("/voicemail", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
              //Todo: handle errors
              //Todo: change status in future
