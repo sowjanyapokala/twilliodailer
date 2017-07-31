@@ -278,13 +278,12 @@ $(function() {
     
      $("#action-buttons > button.voicemail").click( function( ) {
          alert("VoiceMail");
+         alert("CallSid------->"+conn.parameters.CallSid);
          $.post("/voicemail", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
              //Todo: handle errors
              //Todo: change status in future
              //SP.functions.attachUnHold(conn, data);
-
           });
-      
     });
 
     // Wire the ready / not ready buttons up to the server-side status change functions
