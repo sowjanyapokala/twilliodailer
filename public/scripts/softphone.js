@@ -226,7 +226,7 @@ $(function() {
     }
 
     $("#action-buttons > button.voicemail").click( function( ) {
-        alert("VoiceMail");
+        alert("vm");
         alert("callsid");
         alert("CallSid------->"+conn.parameters.CallSid);
          $.post("/hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
