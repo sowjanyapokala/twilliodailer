@@ -176,6 +176,7 @@ $(function() {
 
     SP.functions.attachMuteButton = function(conn) {
       $("#action-buttons > button.mute").click(function() {
+        alert("Mute");
         conn.mute();
         SP.functions.attachUnMute(conn);
       }).removeClass('inactive').addClass("active").text("Mute");
