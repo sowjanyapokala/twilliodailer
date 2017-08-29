@@ -225,7 +225,15 @@ $(function() {
       $("#action-buttons > button.hold").unbind().removeClass('active').addClass("inactive");
     }
 
-
+    $("#action-buttons > button.voicemail").click( function( ) {
+        alert("VoiceMail");
+        alert("CallSid------->"+conn.parameters.CallSid);
+         $.post("/hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
+             //Todo: handle errors
+             //Todo: change status in future
+             //SP.functions.attachUnHold(conn, data);
+          });
+    });
 
 
     SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboundCall) {
@@ -276,33 +284,6 @@ $(function() {
       Twilio.Device.disconnectAll();
     });
     
-     //$("#action-buttons > button.voicemail").click( function( ) {
-         //alert("VoiceMail");
-        // alert("CallSid------->"+conn.parameters.CallSid);
-        // $.post("/voicemail", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
-             //Todo: handle errors
-             //Todo: change status in future
-             //SP.functions.attachUnHold(conn, data);
-         // });
-   // });
-    
-     SP.functions.attachHoldButton = function(conn) {
-      $("#action-buttons > button.voicemail").click(function() {
-         console.dir(conn);
-          alert('voicemail');
-         SP.requestedHold = true;
-         //can't hold outbound calls from Twilio client
-         $.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
-             //Todo: handle errors
-             //Todo: change status in future
-             SP.functions.attachUnHold(conn, data);
-
-          });
-
-      }).removeClass('inactive').addClass("active").text("Hold");
-    }
-    
-
     // Wire the ready / not ready buttons up to the server-side status change functions
     $("#agent-status-controls > button.ready").click( function( ) {
       $("#agent-status-controls > button.ready").prop("disabled",true); 
