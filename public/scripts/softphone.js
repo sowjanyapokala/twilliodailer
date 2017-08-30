@@ -207,7 +207,7 @@ $(function() {
       }).removeClass('inactive').addClass("active").text("Hold");
     }
     // ---- VoiceMail --------- //
-    SP.functions.attachHoldButton = function(conn) {
+    SP.functions.attachVoiceMailButton = function(conn) {
           $("#action-buttons > button.hold").click(function() {
              console.dir(conn);
              alert("TestVoicemail");
