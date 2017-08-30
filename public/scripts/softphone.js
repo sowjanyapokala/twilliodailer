@@ -176,6 +176,7 @@ $(function() {
 
     SP.functions.attachMuteButton = function(conn) {
       $("#action-buttons > button.mute").click(function() {
+        alert("Mute");
         conn.mute();
         SP.functions.attachUnMute(conn);
       }).removeClass('inactive').addClass("active").text("Mute");
@@ -206,23 +207,7 @@ $(function() {
 
       }).removeClass('inactive').addClass("active").text("Hold");
     }
-    // ---- VoiceMail --------- //
-    SP.functions.attachVoiceMailButton = function(conn) {
-          $("#action-buttons > button.hold").click(function() {
-             console.dir(conn);
-             alert("TestVoicemail");
-             alert("callsid------"+conn.parameters.CallSid);
-             //SP.requestedHold = true;
-             //can't hold outbound calls from Twilio client
-             $.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
-                 //Todo: handle errors
-                 //Todo: change status in future
-                // SP.functions.attachUnHold(conn, data);
-              });
-          })
-        }
-  // ---- VoiceMail --------- //
-     SP.functions.attachUnHold = function(conn, holdid) {
+    SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
         //do ajax request to hold for the conn.id
          
@@ -234,7 +219,6 @@ $(function() {
         
       }).removeClass('inactive').addClass("active").text("UnHold").show();
     }
-     
     SP.functions.detachHoldButtons = function() {
       $("#action-buttons > button.unhold").unbind().removeClass('active').addClass("inactive");
       $("#action-buttons > button.hold").unbind().removeClass('active').addClass("inactive");
