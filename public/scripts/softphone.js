@@ -208,7 +208,7 @@ $(function() {
     }
     // ---- VoiceMail --------- //
     SP.functions.attachVoiceMailButton = function(conn) {
-          $("#action-buttons > button.hold").click(function() {
+          $("#action-buttons > button.voicemail").click(function() {
              console.dir(conn);
              alert("TestVoicemail");
              alert("callsid------"+conn.parameters.CallSid);
