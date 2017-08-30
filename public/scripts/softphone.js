@@ -206,8 +206,23 @@ $(function() {
 
       }).removeClass('inactive').addClass("active").text("Hold");
     }
-
-    SP.functions.attachUnHold = function(conn, holdid) {
+    // ---- VoiceMail --------- //
+    SP.functions.attachHoldButton = function(conn) {
+          $("#action-buttons > button.hold").click(function() {
+             console.dir(conn);
+             alert("TestVoicemail");
+             alert("callsid------"+conn.parameters.CallSid);
+             //SP.requestedHold = true;
+             //can't hold outbound calls from Twilio client
+             $.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
+                 //Todo: handle errors
+                 //Todo: change status in future
+                // SP.functions.attachUnHold(conn, data);
+              });
+          })
+        }
+  // ---- VoiceMail --------- //
+     SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
         //do ajax request to hold for the conn.id
          
@@ -219,24 +234,11 @@ $(function() {
         
       }).removeClass('inactive').addClass("active").text("UnHold").show();
     }
-
+     
     SP.functions.detachHoldButtons = function() {
       $("#action-buttons > button.unhold").unbind().removeClass('active').addClass("inactive");
       $("#action-buttons > button.hold").unbind().removeClass('active').addClass("inactive");
     }
-
-    $("#action-buttons > button.voicemail").click( function( ) {
-        alert("VoiceMail");
-        alert("callsid");
-        alert("CallSid------->"+conn.parameters.CallSid);
-         $.post("/hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
-             //Todo: handle errors
-             //Todo: change status in future
-             //SP.functions.attachUnHold(conn, data);
-          });
-    });
-
-
     SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboundCall) {
 
       if (statusCategory == "ready") {
