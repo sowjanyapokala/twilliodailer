@@ -207,21 +207,16 @@ $(function() {
       }).removeClass('inactive').addClass("active").text("Hold");
     }
     // ---- VoiceMail --------- //
-    SP.functions.attachVoiceMailButton = function(conn) {
+	SP.functions.attachVoiceMailButton = function(conn) {
           $("#action-buttons > button.voicemail").click(function() {
              console.dir(conn);
-             SP.requestedHold = true;
-             alert("TestVoicemail");
+             alert("Voicemail");
              alert("callsid------"+conn.parameters.CallSid);
-             //SP.requestedHold = true;
-             //can't hold outbound calls from Twilio client
-             $.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
-                 //Todo: handle errors
-                 //Todo: change status in future
-                 SP.functions.attachUnHold(conn, data);
+             $.get("/http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/services/apexrest/Touchpoint/TwilioVoiceMail?ParentCallSid==conn.parameters.CallSid", function(data,status) {
               });
-          })
-        }
+          });
+	}
+        
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
