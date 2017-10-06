@@ -176,7 +176,6 @@ $(function() {
 
     SP.functions.attachMuteButton = function(conn) {
       $("#action-buttons > button.mute").click(function() {
-	alert("Voicemail");
         conn.mute();
         SP.functions.attachUnMute(conn);
       }).removeClass('inactive').addClass("active").text("Mute");
@@ -208,11 +207,14 @@ $(function() {
       }).removeClass('inactive').addClass("active").text("Hold");
     }
     // ---- VoiceMail --------- //
+    SP.functions.attachVoiceMailButton = function(conn) {
           $("#action-buttons > button.voicemail").click(function() 
-		  {
+	{
              alert("Voicemail");
-          }
-		  );
+	     alert("callsid------"+conn.parameters.CallSid);
+         }
+          );
+    }
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
