@@ -206,17 +206,15 @@ $(function() {
 
       }).removeClass('inactive').addClass("active").text("Hold");
     }
-    // ---- VoiceMail --------- //
+      // ---- VoiceMail --------- //
 	SP.functions.attachVoiceMailButton = function(conn) {
-          $("#action-buttons > button.voicemail").click(function() {
-             console.dir(conn);
+          $("#action-buttons > button.voicemail").click(function() 
+		  {
              alert("Voicemail");
              alert("callsid------"+conn.parameters.CallSid);
-             $.get("http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/services/apexrest/Touchpoint/TwilioVoiceMail?ParentCallSid=conn.parameters.CallSid", function(data,status) {
-              });
-          });
+          }
+		  );
 	}
-        
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
