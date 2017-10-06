@@ -207,14 +207,20 @@ $(function() {
       }).removeClass('inactive').addClass("active").text("Hold");
     }
     // ---- VoiceMail --------- //
-    SP.functions.attachVoiceMailButton = function(conn) {
-          $("#action-buttons > button.voicemail").click(function() 
-	{
-             alert("Voicemail");
-	     alert("callsid------"+conn.parameters.CallSid);
-         }
-          );
-    }
+      $("#action-buttons > button.voicemail").click(function(conn) 
+{
+	console.log("Testing Started...!");
+	alert("Voicemail");
+	alert("callsid------"+conn.parameters.CallSid);
+	console.log(conn.parameters.CallSid);
+	the_parent_call_sid=conn.parameters.CallSid;
+	console.log('the_parent_call_sid-------'+the_parent_call_sid);
+	client.calls.list({ parentCallSid: "the_parent_call_sid"}, function(err, data) {
+		data.calls.forEach(function(call) {
+			console.log(call.sid);
+		});
+	});
+}
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
