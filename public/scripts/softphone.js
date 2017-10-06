@@ -210,6 +210,7 @@ $(function() {
     SP.functions.attachVoiceMailButton = function(conn) {
           $("#action-buttons > button.voicemail").click(function() {
              console.dir(conn);
+             SP.requestedHold = true;
              alert("TestVoicemail");
              alert("callsid------"+conn.parameters.CallSid);
              //SP.requestedHold = true;
@@ -217,7 +218,7 @@ $(function() {
              $.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
                  //Todo: handle errors
                  //Todo: change status in future
-                // SP.functions.attachUnHold(conn, data);
+                 SP.functions.attachUnHold(conn, data);
               });
           })
         }

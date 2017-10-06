@@ -328,9 +328,17 @@ post '/voicemail' do
     callsid = params[:callsid]  #call sid the agent has for their leg
     calltype = params[:calltype]
     @client = Twilio::REST::Client.new(account_sid, auth_token)
-    @call = @client.api.calls(callsid).fetch  
-    @call.update(url: 'http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop',method: 'POST',Status:'completed')
-   puts @call.to
+    if calltype == "Inbound"  #get parentcallsid
+      callsid = @client.account.calls.get(callsid).parent_call_sid  #parent callsid is the customer leg of the call for inbound
+    end
+  
+    puts "callsid = #{callsid} for calltype = #{calltype}"
+  
+    customer_call = @client.account.calls.get(callsid)
+    customer_call.update(:url => "#{request.base_url}/hold",
+                 :method => "POST")  
+    puts customer_call.to
+    return callsid
 end
 
 post '/request_hold' do
