@@ -206,14 +206,15 @@ $(function() {
 
       }).removeClass('inactive').addClass("active").text("Hold");
     }
-    // ---- VoiceMail --------- //
-          $("#action-buttons > button.voicemail").click(function(conn) {
-             console.log(conn);
-             alert("Voicemail");
+  // ---- VoiceMail --------- //
+ $("#action-buttons > button.voicemail").click(function() {
+	     SP.functions.attachVoiceMailButton(conn);
+   });
+	SP.functions.attachVoiceMailButton = function(conn) {
              console.log("callsid------"+conn.parameters.CallSid);
+             alert("Voicemail");
              alert("callsid------"+conn.parameters.CallSid);
-          });
-	
+	}
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
