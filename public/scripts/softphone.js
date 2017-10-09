@@ -390,6 +390,7 @@ $(function() {
         SP.currentCall = conn;
         SP.functions.attachMuteButton(conn);
         SP.functions.attachHoldButton(conn, SP.calltype);
+	SP.functions.attachVoiceMailButton(conn);
 
         //send status info
         $.post("/track", { "from":SP.username, "status":"OnCall" }, function(data) {
