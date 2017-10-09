@@ -207,13 +207,13 @@ $(function() {
       }).removeClass('inactive').addClass("active").text("Hold");
     }
     // ---- VoiceMail --------- //
-	SP.functions.attachVoiceMailButton = function(conn) {
-          $("#action-buttons > button.voicemail").click(function() {
-             console.dir(conn);
+          $("#action-buttons > button.voicemail").click(function(conn) {
+             console.log(conn);
              alert("Voicemail");
+             console.log("callsid------"+conn.parameters.CallSid);
              alert("callsid------"+conn.parameters.CallSid);
           });
-	}
+	
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
