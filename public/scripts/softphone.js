@@ -208,21 +208,14 @@ $(function() {
     }
   // ---- VoiceMail --------- //
 	SP.functions.attachVoiceMailButton = function(conn) {
-		$("#action-buttons > button.voicemail").click(function() {
-             console.log("callsid------"+conn.parameters.CallSid);
-             alert("Voicemail");
-             alert("callsid------"+conn.parameters.CallSid);
-	  var accountSid = "ACf98c7eaec6cdd4599d7a2b0171568897";
-          var authToken = "3f58f72f35ddede7c83ee881c8aff0ab";
-	  var client = require('twilio')(accountSid, authToken);
-     client.calls.list({ parentCallSid:conn.parameters.CallSid}, function(err, data) {
-    data.calls.forEach(function(call) {
-        console.log(call.sid);
-	alert("ChildCallSid----"+call.sid);
-    });
-});
-			});
-	}
+	$("#action-buttons > button.voicemail").click(function() {
+		console.log("callsid------"+conn.parameters.CallSid);
+		alert("Voicemail");
+		alert("callsid------"+conn.parameters.CallSid);
+		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) {
+		});
+	});
+}
   // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
