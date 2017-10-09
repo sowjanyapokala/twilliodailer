@@ -344,6 +344,13 @@ post '/request_hold' do
     if calltype == "Inbound"  #get parentcallsid
       callsid = @client.account.calls.get(callsid).parent_call_sid  #parent callsid is the customer leg of the call for inbound
     end
+else
+  child_calls = client.calls.list(parent_call_sid=callsid)
+  child_calls.each do |childcall|
+  puts "Child Call ID: #{childcall.sid}"
+  callsid=childcall.sid 
+end
+end
     puts "callsid = #{callsid} for calltype = #{calltype}"
     customer_call = @client.account.calls.get(callsid)
     customer_call.update(:url => "#{request.base_url}/hold",
