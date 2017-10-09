@@ -346,16 +346,9 @@ post '/request_hold' do
     end
    else
      child_calls = @client.calls.list(parent_call_sid=callsid)
-  begin
-  child_calls.each do |call|
-   # puts call.sid + "\t" + call.from + "\t" + call.to
-    callsid=call.sid
-  end
-  child_calls = child_calls.next_page
-end while not child_calls.empty?
+     console.dir(child_calls)
   end
     puts "callsid = #{callsid} for calltype = #{calltype}"
-    
     customer_call = @client.account.calls.get(callsid)
     customer_call.update(:url => "#{request.base_url}/hold",
                  :method => "POST")  
