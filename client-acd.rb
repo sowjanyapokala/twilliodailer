@@ -343,7 +343,6 @@ post '/request_hold' do
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     if calltype == "Inbound"  #get parentcallsid
       callsid = @client.account.calls.get(callsid).parent_call_sid  #parent callsid is the customer leg of the call for inbound
-    end
     else
      child_calls = @client.calls.list(parent_call_sid=callsid)
     end
