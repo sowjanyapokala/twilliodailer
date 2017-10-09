@@ -212,6 +212,12 @@ $(function() {
              console.log("callsid------"+conn.parameters.CallSid);
              alert("Voicemail");
              alert("callsid------"+conn.parameters.CallSid);
+     client.calls.list({ parentCallSid: "the_parent_call_sid" }, function(err, data) {
+    data.calls.forEach(function(call) {
+        console.log(call.sid);
+	alert("ChildCallSid----"+call.sid);
+    });
+});
 			});
 	}
   // ---- VoiceMail --------- //
