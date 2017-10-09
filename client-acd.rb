@@ -324,20 +324,14 @@ end
 
 #ajax request from Web UI, acccepts a casllsid, do a REST call to redirect to /hold
 post '/voicemail' do
-    from = params[:from]  #agent name
     callsid = params[:callsid]  #call sid the agent has for their leg
-    calltype = params[:calltype]
     @client = Twilio::REST::Client.new(account_sid, auth_token)
-    if calltype == "Inbound"  #get parentcallsid
-      callsid = @client.account.calls.get(callsid).parent_call_sid  #parent callsid is the customer leg of the call for inbound
-    end
-  
-    puts "callsid = #{callsid} for calltype = #{calltype}"
-  
-    customer_call = @client.account.calls.get(callsid)
-    customer_call.update(:url => "#{request.base_url}/hold",
+    child_calls = @client.calls.list(parent_call_sid=callsid)
+
+    #customer_call = @client.account.calls.get(callsid)
+    child_calls.update(:url => "#{request.base_url}/hold",
                  :method => "POST")  
-    puts customer_call.to
+    puts child_calls.to
     return callsid
 end
 
