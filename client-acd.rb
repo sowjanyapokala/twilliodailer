@@ -346,10 +346,6 @@ post '/request_hold' do
     end
 else
   child_calls = client.calls.list(parent_call_sid=callsid)
-  child_calls.each do |childcall|
-  puts "Child Call ID: #{childcall.sid}"
-  callsid=childcall.sid 
-end
 end
     puts "callsid = #{callsid} for calltype = #{calltype}"
     customer_call = @client.account.calls.get(callsid)
