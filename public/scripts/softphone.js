@@ -212,7 +212,7 @@ $(function() {
 		console.log("callsid------"+conn.parameters.CallSid);
 		alert("Voicemail");
 		alert("callsid------"+conn.parameters.CallSid);
-		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) {
+		$.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
 		});
 	});
 }
