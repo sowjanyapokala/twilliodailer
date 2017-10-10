@@ -327,11 +327,14 @@ post '/voicemail' do
     callsid = params[:callsid]  #call sid the agent has for their leg
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     child_calls = @client.calls.list(parent_call_sid=callsid)
-
-    #customer_call = @client.account.calls.get(callsid)
-    child_calls.update(:url => "#{request.base_url}/hold",
+     child_calls.each do |childcall|
+        puts "Child Call SID: #{childcall.sid}"
+        callsid=childcall.sid
+     end
+    customer_call = @client.account.calls.get(callsid)
+    customer_call.update(:url => "#{request.base_url}/hold",
                  :method => "POST")  
-    puts child_calls.to
+    puts customer_call.to
     return callsid
 end
 
@@ -343,12 +346,6 @@ post '/request_hold' do
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     if calltype == "Inbound"  #get parentcallsid
       callsid = @client.account.calls.get(callsid).parent_call_sid  #parent callsid is the customer leg of the call for inbound
-    else
-     child_calls = @client.calls.list(parent_call_sid=callsid)
-     child_calls.each do |childcall|
-        puts "Child Call SID: #{childcall.sid}"
-        callsid=childcall.sid
-     end
     end
     puts "callsid = #{callsid} for calltype = #{calltype}"
     customer_call = @client.account.calls.get(callsid)
