@@ -210,9 +210,8 @@ $(function() {
 	SP.functions.attachVoiceMailButton = function(conn) {
 	$("#action-buttons > button.voicemail").click(function() {
 		alert("Voicemail Functionality");
+		Console.log("Voicemail Functionality");
 		alert("CallSID------"+conn.parameters.CallSid);
-		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) {
-		});
 	});
 }
   // ---- VoiceMail --------- //
