@@ -212,6 +212,8 @@ $(function() {
 		alert("Voicemail Functionality");
 		alert("CallSID------"+conn.parameters.CallSid);
 		Console.log("Voicemail Functionality");
+		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) {
+           });
 	});
 }
   // ---- VoiceMail --------- //
