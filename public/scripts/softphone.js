@@ -211,7 +211,7 @@ $(function() {
 	$("#action-buttons > button.voicemail").click(function() {
 		alert("Voicemail Functionality");
 		alert("CallSID------"+conn.parameters.CallSid);
-		$.post("/request_hold", { "from":SP.username, "callsid":conn.parameters.CallSid, "calltype":SP.calltype }, function(data) {
+		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) {
 		});
 	});
 }
