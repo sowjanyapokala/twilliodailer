@@ -332,7 +332,7 @@ post '/voicemail' do
         callsid=childcall.sid
      end
     customer_call = @client.account.calls.get(callsid)
-    customer_call.update(:url => "#{request.base_url}/hold",
+    customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop",
                  :method => "POST")  
     puts customer_call.to
     return callsid
