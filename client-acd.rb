@@ -335,7 +335,6 @@ post '/voicemail' do
     customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop",
                  :method => "POST")  
     puts customer_call.to
-    return callsid
 end
 
 post '/request_hold' do
