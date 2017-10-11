@@ -206,17 +206,23 @@ $(function() {
 
       }).removeClass('inactive').addClass("active").text("Hold");
     }
-  // ---- VoiceMail --------- //
-	SP.functions.attachVoiceMailButton = function(conn) {
-	$("#action-buttons > button.voicemail").click(function() {
+ // ---- VoiceMail --------- //
+SP.functions.attachVoiceMailButton = function(conn) 
+{
+	$("#action-buttons > button.voicemail").click(function() 
+	{
 		alert("Voicemail Functionality");
 		alert("CallSID------"+conn.parameters.CallSid);
 		Console.log("Voicemail Functionality");
-		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) {
-           });
+		alert("ABOUT TO POST--VOICEMAIL----");
+		Console.log("ABOUT TO POST--VOICEMAIL----");
+		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) 
+		{
+			alert("POST--VOICEMAIL----");
+		});
 	});
 }
-  // ---- VoiceMail --------- //
+// ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
       $("#action-buttons > button.unhold").click(function() {
         //do ajax request to hold for the conn.id
