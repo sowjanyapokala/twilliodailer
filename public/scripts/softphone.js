@@ -213,9 +213,9 @@ SP.functions.attachVoiceMailButton = function(conn)
 	{
 		alert("Voicemail Functionality");
 		alert("CallSID------"+conn.parameters.CallSid);
-		Console.log("Voicemail Functionality");
+		console.log("Voicemail Functionality");
 		alert("ABOUT TO POST--VOICEMAIL----");
-		Console.log("ABOUT TO POST--VOICEMAIL----");
+		console.log("ABOUT TO POST--VOICEMAIL----");
 		$.post("/voicemail", {"callsid":conn.parameters.CallSid}, function(data) 
 		{
 			alert("POST--VOICEMAIL----");
