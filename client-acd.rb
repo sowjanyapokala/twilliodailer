@@ -328,10 +328,8 @@ post '/voicemail' do
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     # child_calls = @client.calls.list(parent_call_sid=callsid)
 	child_calls = @client.calls.list parent_call_sid: callsid
-     child_calls.each do |childcall|
-        puts "Child Call SID: #{childcall.sid}"
-        callsid=childcall.sid
-     end
+     
+      callsid = child_calls.last
     customer_call = @client.account.calls.get(callsid)
     customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop",
                  :method => "POST")  
