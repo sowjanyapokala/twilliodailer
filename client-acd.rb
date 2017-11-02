@@ -333,7 +333,7 @@ post '/voicemail' do
         callsid=childcall.sid
 	answeredby = childcall.answered_by
      end
-	if answeredby == "human"
+	if answeredby == "null"
 	    customer_call = @client.account.calls.get(callsid)
 	    customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop",
 			 :method => "POST")  
