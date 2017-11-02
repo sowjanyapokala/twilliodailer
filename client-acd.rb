@@ -331,14 +331,14 @@ post '/voicemail' do
      child_calls.each do |childcall|
         puts "Child Call SID: #{childcall.sid}"
         callsid=childcall.sid
-	answeredby = childcall.answered_by
+	#answeredby = childcall.answered_by
      end
-	if answeredby == "null"
+	#if answeredby == "null"
 	    customer_call = @client.account.calls.get(callsid)
 	    customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop",
 			 :method => "POST")  
 	    puts customer_call.to
-	end
+	#end
 end
 
 post '/request_hold' do
