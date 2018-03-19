@@ -218,7 +218,7 @@ SP.functions.attachVoiceMailButton = function(conn)
 		//console.log("ABOUT TO POST--VOICEMAIL----");
 		$.post("/voicemail", {"callsid":conn.parameters.CallSid,"MachineDetection":"Enable"}, function(data) 
 		{
-			//alert("POST--VOICEMAIL----");
+			alert("POST--VOICEMAIL----");
 		});
 	});
 }
