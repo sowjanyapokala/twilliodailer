@@ -211,14 +211,14 @@ SP.functions.attachVoiceMailButton = function(conn)
 {
 	$("#action-buttons > button.voicemail").click(function() 
 	{
-		alert("Voicemail Functionality");
-		alert("CallSID------"+conn.parameters.CallSid);
-		console.log("Voicemail Functionality");
-		alert("ABOUT TO POST--VOICEMAIL----");
-		console.log("ABOUT TO POST--VOICEMAIL----");
+		//alert("Voicemail Functionality");
+		//alert("CallSID------"+conn.parameters.CallSid);
+		//console.log("Voicemail Functionality");
+		//alert("ABOUT TO POST--VOICEMAIL----");
+		//console.log("ABOUT TO POST--VOICEMAIL----");
 		$.post("/voicemail", {"callsid":conn.parameters.CallSid,"MachineDetection":"Enable"}, function(data) 
 		{
-			alert("POST--VOICEMAIL----");
+			//alert("POST--VOICEMAIL----");
 		});
 	});
 }
