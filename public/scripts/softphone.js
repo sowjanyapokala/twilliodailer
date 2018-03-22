@@ -249,6 +249,9 @@ SP.functions.attachVoiceMailButton = function(conn)
            $("#agent-status").removeClass();
            $("#agent-status").addClass("ready");
            $('#softphone').removeClass('incoming');
+	      
+	var msg = document.getElementById("00N5C000000qGvl_ileinner");
+	alert("Salesforce Field: " + msg);
 
        }
 
