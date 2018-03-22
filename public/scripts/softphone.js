@@ -1,7 +1,5 @@
 // Page loaded
 //added comment
-var msg = document.getElementById("00N5C000000qGvl_ileinner");
-	alert("Salesforce Field: " + msg);
 $(function() {
 
     // ** Application container ** //
