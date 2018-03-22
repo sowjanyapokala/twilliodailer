@@ -22,7 +22,8 @@ $(function() {
         sforce.interaction.runApex('UserInfo', 'getUserName', '' , SP.functions.registerTwilioClient);
     }
 
-    
+    var msg = document.getElementById("00N5C000000qGvl_ileinner");
+		alert("Salesforce Field: " + msg);
 
     SP.functions.registerTwilioClient = function(response) {
 
