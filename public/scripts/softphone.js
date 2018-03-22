@@ -217,8 +217,6 @@ SP.functions.attachVoiceMailButton = function(conn)
 		//console.log("Voicemail Functionality");
 		//alert("ABOUT TO POST--VOICEMAIL----");
 		//console.log("ABOUT TO POST--VOICEMAIL----");
-		var msg = document.getElementById("00N5C000000qGvl_ileinner");
-		alert("Salesforce Field: " + msg);
 		$.post("/voicemail", {"callsid":conn.parameters.CallSid,"MachineDetection":"Enable"}, function(data) 
 		{
 			alert("POST--VOICEMAIL----");
