@@ -23,7 +23,7 @@ $(function() {
     }
 
     var msg = document.getElementById("00N5C000000qGvl_ileinner");
-	console.log("Salesforce Field: " + msg);
+	alert("Salesforce Field: " + msg);
 
     SP.functions.registerTwilioClient = function(response) {
 
