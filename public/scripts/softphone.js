@@ -14,7 +14,7 @@ $(function() {
     SP.requestedHold = false; //set if agent requested hold button
 
 
-
+ 
     SP.functions = {};
 
         // Get a Twilio Client name and register with Twilio
@@ -22,6 +22,8 @@ $(function() {
         sforce.interaction.runApex('UserInfo', 'getUserName', '' , SP.functions.registerTwilioClient);
     }
 
+    var msg = document.getElementById("00N5C000000qGvl_ileinner");
+	console.log("Salesforce Field: " + msg);
 
     SP.functions.registerTwilioClient = function(response) {
 
