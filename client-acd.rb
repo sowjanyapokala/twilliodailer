@@ -335,7 +335,7 @@ post '/voicemail' do
 	#if answeredby == "human"
 	    customer_call = @client.account.calls.get(callsid)
 	    # dl_id = "13614944241"
-	    dl_id = from = params[:from]
+	    dl_id = params[:from]
 	    customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop?uniqueid=#{dl_id}",
 			 :method => "POST")  
 	    puts customer_call.to
