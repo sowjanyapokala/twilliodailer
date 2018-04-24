@@ -324,13 +324,14 @@ end
 #ajax request from Web UI, acccepts a casllsid, do a REST call to redirect to /hold
 post '/voicemail' do
     callsid = params[:callsid]  #call sid the agent has for their leg
+     clid = params[:calid]
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     # child_calls = @client.calls.list(parent_call_sid=callsid)
 	child_calls = @client.calls.list parent_call_sid: callsid
      child_calls.each do |childcall|
         puts "Child Call SID: #{childcall.sid}"
         callsid=childcall.sid
-	clid = childcall.From
+	
 	#answeredby = childcall.answered_by
      end
 	#if answeredby == "human"
