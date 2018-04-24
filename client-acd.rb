@@ -324,7 +324,6 @@ end
 #ajax request from Web UI, acccepts a casllsid, do a REST call to redirect to /hold
 post '/voicemail' do
     callsid = params[:callsid]  #call sid the agent has for their leg
-    dl_id = callerid
     @client = Twilio::REST::Client.new(account_sid, auth_token)
     # child_calls = @client.calls.list(parent_call_sid=callsid)
 	child_calls = @client.calls.list parent_call_sid: callsid
@@ -336,7 +335,7 @@ post '/voicemail' do
 	#if answeredby == "human"
 	    customer_call = @client.account.calls.get(callsid)
 	    # dl_id = "13614944241"
-	    #dl_id =  did
+	    dl_id = from = params[:from]
 	    customer_call.update(:url => "http://yardidhruv-touchpoint.cs62.force.com/Click2Dial/VoiceMailDrop?uniqueid=#{dl_id}",
 			 :method => "POST")  
 	    puts customer_call.to
