@@ -72,7 +72,7 @@ div#dialer {
   padding: 10px 0 5px 0;
 }
 .number {
-  border: 1px solid white;
+  
   color: #3B3B3B;
   cursor: pointer;
   display: inline-block;
