@@ -18,10 +18,13 @@ body {
   font-family: "Helvetica", Arial, sans-serif;
   background-color: white;
 }
-
+#SoftphoneIframe
+{
+  height:500px !important; 
+}
 #softphone {
   width: 175px;
-  height:300px;
+  
 }
 
 #agent-status-controls {
