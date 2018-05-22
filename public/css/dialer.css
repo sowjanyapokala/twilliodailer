@@ -21,6 +21,7 @@ body {
 
 #softphone {
   width: 175px;
+  height:300px;
 }
 
 #agent-status-controls {
