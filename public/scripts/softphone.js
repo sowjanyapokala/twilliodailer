@@ -371,8 +371,8 @@ SP.functions.attachVoiceMailButton = function(conn)
         SP.functions.hideCallData();
         SP.functions.ready();
         //Setting caller phone and caller id to null
-        $("#number-entry > input").val(); 
-        $("#callerid-entry > input").val();
+        $("#number-entry > input").val(''); 
+        $("#callerid-entry > input").val('');
         sforce.interaction.getPageInfo(saveLog);
     });
 
