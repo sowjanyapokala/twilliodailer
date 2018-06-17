@@ -516,25 +516,27 @@ SP.functions.attachVoiceMailButton = function(conn)
 
       //Setting the phone numbers and caller id in text box of softphone
       $("#number-entry > input").val(callerPhoneNumber); 
-      $("#callerid-entry > input").val(response.result);
+      $("#callerid-entry > input").val(response.result != undefined && response.result != null ? response.result : '');
       //called onClick2dial
-            sforce.interaction.setVisible(true);  //pop up CTI console
-
-            //alert("cleanednumber = " + cleanednumber);  
-           var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
-           console.log('Params before calling connect()'+JSON.stringify(params));
-            Twilio.Device.connect(params);
+      sforce.interaction.setVisible(true);  //pop up CTI console
+      var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
+      console.log('Params before calling connect()'+JSON.stringify(params));
+      Twilio.Device.connect(params);
     }
     function startCall(response) { 
             
             var result = JSON.parse(response.result);
-            console.log('Inside Start Call()'+result.number); 
             callerPhoneNumber = cleanFormatting(result.number);
             var objId = result.objectId;
             callerObjectId = objId;
             sforce.interaction.runApex('CallerIdRetrivalService', 'getCallerId', 'contactId='+objId , callStartCall);
+            sforce.interaction.runApex('ContactsPhoneMatchService', 'getContactsPhoneMatch', 'conId='+objId+'&phoneNumber='+result.number, displayContacts);
             
     } 
+
+    var displayContacts = function(response) {
+      console.log(JSON.parse(response));
+    }
 
     var saveLogcallback = function (response) {
         if (response.result) {
@@ -586,7 +588,7 @@ SP.functions.attachVoiceMailButton = function(conn)
                         
             console.log("save params = " + JSON.stringify(saveParamsMap));
             
-            sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
+            //sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
             
     }
 
