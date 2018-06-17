@@ -353,8 +353,8 @@ SP.functions.attachVoiceMailButton = function(conn)
 
         //Setting caller phone and caller id to null
         $("#number-entry > input").val(); 
-      $("#callerid-entry > input").val();
-        console.log("disconnectiong...");
+        $("#callerid-entry > input").val();
+        console.log("disconnectiong..."+json.stringify(conn));
         SP.functions.updateAgentStatusText("ready", "Call ended");
 
         
