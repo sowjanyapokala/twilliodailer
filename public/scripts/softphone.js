@@ -373,11 +373,9 @@ SP.functions.attachVoiceMailButton = function(conn)
         //Setting caller phone and caller id to null
         $("#number-entry > input").val(''); 
         $("#callerid-entry > input").val('');
-        console.log('SP.calltype====>'+SP.calltype);
-
+        
         if(SP.calltype == 'Outbound'){
-          console.log('Inside if to save logs()');
-          //sforce.interaction.getPageInfo(saveLog);  
+          sforce.interaction.getPageInfo(saveLog);  
         }
         
     });
