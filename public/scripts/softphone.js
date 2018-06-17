@@ -210,20 +210,20 @@ $(function() {
  // ---- VoiceMail --------- //
 SP.functions.attachVoiceMailButton = function(conn) 
 {
-	$("#action-buttons > button.voicemail").click(function() 
-	{
-		//alert("Voicemail Functionality");
-		//alert("CallSID------"+conn.parameters.CallSid);
-		//alert("callerid------"+conn.parameters.From);
-		//console.log("Voicemail Functionality");
-		//alert("ABOUT TO POST--VOICEMAIL----");
-		
-		//console.log("ABOUT TO POST--VOICEMAIL----");
-		$.post("/voicemail", {"callsid":conn.parameters.CallSid,"MachineDetection":"Enable","calid":$("#callerid-entry > input").val()}, function(data) 
-		{
-			alert("POST--VOICEMAIL----");
-		});
-	});
+  $("#action-buttons > button.voicemail").click(function() 
+  {
+    //alert("Voicemail Functionality");
+    //alert("CallSID------"+conn.parameters.CallSid);
+    //alert("callerid------"+conn.parameters.From);
+    //console.log("Voicemail Functionality");
+    //alert("ABOUT TO POST--VOICEMAIL----");
+    
+    //console.log("ABOUT TO POST--VOICEMAIL----");
+    $.post("/voicemail", {"callsid":conn.parameters.CallSid,"MachineDetection":"Enable","calid":$("#callerid-entry > input").val()}, function(data) 
+    {
+      alert("POST--VOICEMAIL----");
+    });
+  });
 }
 // ---- VoiceMail --------- //
      SP.functions.attachUnHold = function(conn, holdid) {
@@ -251,7 +251,7 @@ SP.functions.attachVoiceMailButton = function(conn)
            $("#agent-status").removeClass();
            $("#agent-status").addClass("ready");
            $('#softphone').removeClass('incoming');
-	      
+        
        }
 
       if (statusCategory == "notReady") {
@@ -368,7 +368,7 @@ SP.functions.attachVoiceMailButton = function(conn)
         // return to waiting state
         SP.functions.hideCallData();
         SP.functions.ready();
-        //sforce.interaction.getPageInfo(saveLog);
+        sforce.interaction.getPageInfo(saveLog);
     });
 
     Twilio.Device.connect(function (conn) {
@@ -400,7 +400,7 @@ SP.functions.attachVoiceMailButton = function(conn)
         SP.currentCall = conn;
         SP.functions.attachMuteButton(conn);
         SP.functions.attachHoldButton(conn, SP.calltype);
-	SP.functions.attachVoiceMailButton(conn);
+  SP.functions.attachVoiceMailButton(conn);
 
         //send status info
         $.post("/track", { "from":SP.username, "status":"OnCall" }, function(data) {
@@ -501,18 +501,26 @@ SP.functions.attachVoiceMailButton = function(conn)
         }
 
 
-    function startCall(response) { 
-            
-            //called onClick2dial
-            sforce.interaction.setVisible(true);  //pop up CTI console
-            var result = JSON.parse(response.result);  
-            var cleanednumber = cleanFormatting(result.number);
+    var callerPhoneNumber ='';
+    var callerObjectId = '';
+    var callStartCall = function(response) {
 
+      //called onClick2dial
+            sforce.interaction.setVisible(true);  //pop up CTI console
 
             //alert("cleanednumber = " + cleanednumber);  
-            params = {"PhoneNumber": cleanednumber, "CallerId": $("#callerid-entry > input").val()};
+           var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
+           console.log('Params before calling connect()'+JSON.stringify(params));
             Twilio.Device.connect(params);
-
+    }
+    function startCall(response) { 
+            console.log('Inside Start Call()');
+            var result = JSON.parse(response.result); 
+            callerPhoneNumber = cleanFormatting(result.number);
+            var objId = result.objectId;
+            callerObjectId = objId;
+            sforce.interaction.runApex('CallerIdRetrivalService', 'getCallerId', 'contactId='+objId , callStartCall);
+            
     } 
 
     var saveLogcallback = function (response) {
@@ -526,6 +534,7 @@ SP.functions.attachVoiceMailButton = function(conn)
 
     function saveLog(response) {
             
+            console.log('Call Log Response=>'+JSON.stringify(response));
             console.log("saving log result, response:");
             var result = JSON.parse(response.result);
 
@@ -538,26 +547,35 @@ SP.functions.attachVoiceMailButton = function(conn)
             var currentMonth = currentDate.getMonth()+1;
             var currentYear = currentDate.getFullYear();
             var dueDate = currentYear + '-' + currentMonth + '-' + currentDay;
-            var saveParams = 'Subject=' + SP.calltype +' Call on ' + timeStamp;
 
-            saveParams += '&Status=completed';                  
-            saveParams += '&CallType=' + SP.calltype;  //should change this to reflect actual inbound or outbound
-            saveParams += '&Activitydate=' + dueDate;
-            saveParams += '&Phone=' + SP.state.callNumber;  //we need to get this from.. somewhere      
-            saveParams += '&Description=' + "test description";   
+            //Map to hold the log data 
+            var saveParamsMap = {};
 
-            console.log("About to parse  result..");
-            
+            saveParamsMap['Subject'] = 'Call log';
+            saveParamsMap['Call on'] = timeStamp;
+            saveParamsMap['Status'] = 'Open';
+            saveParamsMap['CallType'] = SP.calltype;
+            saveParamsMap['Activitydate'] = dueDate;
+            saveParamsMap['Phone'] = callerPhoneNumber;
+            saveParamsMap['Description'] = 'Call log for '+callerPhoneNumber;
+
             var result = JSON.parse(response.result);
-            var objectidsubstr = result.objectId.substr(0,3);
+            var objectidsubstr = result.objectId == undefined || result.objectId == null || result.objectId == '' ?  callerObjectId.substr(0,3) : result.objectId.substr(0,3); 
             // object id 00Q means a lead.. adding this to support logging on leads as well as contacts.
             if(objectidsubstr == '003' || objectidsubstr == '00Q') {
-                saveParams += '&whoId=' + result.objectId;                    
+                
+                saveParamsMap['whoId'] = result.objectId == undefined || result.objectId == null || result.objectId == '' ?  callerObjectId : result.objectId;
+
             } else {
-                saveParams += '&whatId=' + result.objectId;            
+
+                saveParamsMap['whatId'] = result.objectId == undefined || result.objectId == null || result.objectId == '' ?  callerObjectId : result.objectId;
             }
+                        
+            console.log("save params = " + JSON.stringify(saveParamsMap));
             
-            console.log("save params = " + saveParams);
-            sforce.interaction.saveLog('Task', saveParams, saveLogcallback);
-  }
+            sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
+            
+    }
+
 });
+
