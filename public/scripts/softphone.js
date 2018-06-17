@@ -530,7 +530,11 @@ function startCall(response) {
         var objId = result.objectId;
         callerObjectId = objId;
         sforce.interaction.runApex('CallerIdRetrivalService', 'getCallerId', 'contactId='+objId , callStartCall);
-        sforce.interaction.runApex('ContactsPhoneMatchService', 'getContactsPhoneMatch', 'conId='+objId+'&phoneNumber='+result.number, displayContacts);
+
+        if(objId.substr(0,3)== '003'){
+          sforce.interaction.runApex('ContactsPhoneMatchService', 'getContactsPhoneMatch', 'conId='+objId+'&phoneNumber='+result.number, displayContacts);
+        }
+        
         
 } 
 
