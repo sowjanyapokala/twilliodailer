@@ -352,7 +352,7 @@ SP.functions.attachVoiceMailButton = function(conn)
     Twilio.Device.disconnect(function (conn) {
 
         
-        console.log("disconnectiong...");
+        console.log("disconnectiong..."+conn.status);
         SP.functions.updateAgentStatusText("ready", "Call ended");
 
         
