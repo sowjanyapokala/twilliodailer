@@ -352,7 +352,7 @@ SP.functions.attachVoiceMailButton = function(conn)
     Twilio.Device.disconnect(function (conn) {
 
         
-        console.log("disconnectiong..."+conn.status);
+        console.log("disconnectiong...");
         SP.functions.updateAgentStatusText("ready", "Call ended");
 
         
@@ -373,7 +373,13 @@ SP.functions.attachVoiceMailButton = function(conn)
         //Setting caller phone and caller id to null
         $("#number-entry > input").val(''); 
         $("#callerid-entry > input").val('');
-        sforce.interaction.getPageInfo(saveLog);
+        console.log('SP.calltype====>'+SP.calltype);
+
+        if(SP.calltype == 'Outbound'){
+          console.log('Inside if to save logs()');
+          //sforce.interaction.getPageInfo(saveLog);  
+        }
+        
     });
 
     Twilio.Device.connect(function (conn) {
@@ -405,7 +411,7 @@ SP.functions.attachVoiceMailButton = function(conn)
         SP.currentCall = conn;
         SP.functions.attachMuteButton(conn);
         SP.functions.attachHoldButton(conn, SP.calltype);
-  SP.functions.attachVoiceMailButton(conn);
+        SP.functions.attachVoiceMailButton(conn);
 
         //send status info
         $.post("/track", { "from":SP.username, "status":"OnCall" }, function(data) {
