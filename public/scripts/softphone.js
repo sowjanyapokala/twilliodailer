@@ -542,6 +542,17 @@ var displayContacts = function(response) {
     console.log(objResult.conDetList);
 
     var table = document.createElement('table');
+    var tr = document.createElement('tr');
+    var th1 = document.createElement('th');
+    var th2 = document.createElement('th');
+
+    var text1 = document.createTextNode('Name');
+    var text2 = document.createTextNode('PhoneNumber');
+
+    th1.appendChild(text1);
+    th2.appendChild(text2);
+    tr.appendChild(th1);
+    tr.appendChild(th2);    
     for (var i = 0; i < objResult.conDetList.length ; i++){
       var tr = document.createElement('tr');   
 
