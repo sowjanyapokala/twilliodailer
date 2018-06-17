@@ -559,11 +559,14 @@ var displayContacts = function(response) {
 
       var td1 = document.createElement('td');
       var td2 = document.createElement('td');
+      var link = document.createElement('a');
+      link.setAttribute('href',objResult.sfdcBaseUrl+objResult.conDetList[i].Id);
+      link.setAttribute('target', "_blank");
 
       var text1 = document.createTextNode(objResult.conDetList[i].name);
       var text2 = document.createTextNode(objResult.conDetList[i].phoneNumber);
-
-      td1.appendChild(text1);
+      link.appendChild(text1);
+      td1.appendChild(link);
       td2.appendChild(text2);
       tr.appendChild(td1);
       tr.appendChild(td2);
