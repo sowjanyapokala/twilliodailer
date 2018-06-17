@@ -351,10 +351,8 @@ SP.functions.attachVoiceMailButton = function(conn)
     /* Log a message when a call disconnects. */
     Twilio.Device.disconnect(function (conn) {
 
-        //Setting caller phone and caller id to null
-        $("#number-entry > input").val(); 
-        $("#callerid-entry > input").val();
-        console.log("disconnectiong..."+JSON.parse(conn));
+        
+        console.log("disconnectiong...");
         SP.functions.updateAgentStatusText("ready", "Call ended");
 
         
@@ -372,6 +370,9 @@ SP.functions.attachVoiceMailButton = function(conn)
         // return to waiting state
         SP.functions.hideCallData();
         SP.functions.ready();
+        //Setting caller phone and caller id to null
+        $("#number-entry > input").val(); 
+        $("#callerid-entry > input").val();
         sforce.interaction.getPageInfo(saveLog);
     });
 
