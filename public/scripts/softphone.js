@@ -526,8 +526,9 @@ SP.functions.attachVoiceMailButton = function(conn)
             Twilio.Device.connect(params);
     }
     function startCall(response) { 
-            console.log('Inside Start Call()');
-            var result = JSON.parse(response.result); 
+            
+            var result = JSON.parse(response.result);
+            console.log('Inside Start Call()'+result.number); 
             callerPhoneNumber = cleanFormatting(result.number);
             var objId = result.objectId;
             callerObjectId = objId;
