@@ -350,6 +350,10 @@ SP.functions.attachVoiceMailButton = function(conn)
 
     /* Log a message when a call disconnects. */
     Twilio.Device.disconnect(function (conn) {
+
+        //Setting caller phone and caller id to null
+        $("#number-entry > input").val(); 
+      $("#callerid-entry > input").val();
         console.log("disconnectiong...");
         SP.functions.updateAgentStatusText("ready", "Call ended");
 
