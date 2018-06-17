@@ -553,6 +553,7 @@ var displayContacts = function(response) {
     th2.appendChild(text2);
     tr.appendChild(th1);
     tr.appendChild(th2);    
+    table.appendChild(tr);
     for (var i = 0; i < objResult.conDetList.length ; i++){
       var tr = document.createElement('tr');   
 
