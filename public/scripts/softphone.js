@@ -536,7 +536,7 @@ SP.functions.attachVoiceMailButton = function(conn)
 
     var displayContacts = function(response) {
       console.log('Inside displayContacts()');
-      console.log(response.'sfdcBaseUrl');
+      console.log(response.sfdcBaseUrl);
     }
 
     var saveLogcallback = function (response) {
