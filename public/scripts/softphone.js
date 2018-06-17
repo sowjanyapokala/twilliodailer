@@ -538,7 +538,8 @@ SP.functions.attachVoiceMailButton = function(conn)
       console.log('Inside displayContacts()');
       if(response.result != undefined && response.result != null){
          var objResult = JSON.parse(response.result); 
-        console.log(objResult);
+        console.log(objResult.sfdcBaseUrl);
+        console.log(objResult.conDetList);
         //console.log(response.result.conDetList);
       }
       
