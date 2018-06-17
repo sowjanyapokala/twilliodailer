@@ -536,9 +536,9 @@ SP.functions.attachVoiceMailButton = function(conn)
 
     var displayContacts = function(response) {
       console.log('Inside displayContacts()');
-      if(response != undefined && response != null){
+      if(response.result != undefined && response.result != null){
          
-        console.log(typeOf(response));
+        console.log(response.result);
       }
       
     }
