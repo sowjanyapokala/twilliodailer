@@ -281,7 +281,7 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 }
 
 // Call button will make an outbound call (click to dial) to the number entered 
-$("#action-buttons > button.call").click( function( ) { 
+$("#action-buttons > button.call").click( function() { 
   var callerPhNumber = "";
   callerPhNumber = cleanFormatting($("#number-entry > input").val());
   if($("#callerid-entry > input").val() == null || $("#callerid-entry > input").val() == undefined ){
@@ -291,6 +291,7 @@ $("#action-buttons > button.call").click( function( ) {
   else{
 	  params = {"PhoneNumber": callerPhNumber, "CallerId": $("#callerid-entry > input").val()}; 
 	  } 
+    console.log('Params before call===>'+params);
   Twilio.Device.connect(params);
 });
 
