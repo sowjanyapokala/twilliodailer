@@ -285,10 +285,11 @@ $("#action-buttons > button.call").click( function() {
   var callerPhNumber = "";
   callerPhNumber = cleanFormatting($("#number-entry > input").val());
   if($("#callerid-entry > input").val() == null || $("#callerid-entry > input").val() == undefined ){
-	  
+	 console.log('inside If()'); 
   params = {"PhoneNumber": callerPhNumber, "CallerId": '8442012921'};
   }
   else{
+    console.log('Inside Else');
 	  params = {"PhoneNumber": callerPhNumber, "CallerId": $("#callerid-entry > input").val()}; 
 	  } 
     console.log('Params before call===>'+JSON.stringify(params));
