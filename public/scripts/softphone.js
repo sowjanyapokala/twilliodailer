@@ -291,7 +291,7 @@ $("#action-buttons > button.call").click( function() {
   else{
 	  params = {"PhoneNumber": callerPhNumber, "CallerId": $("#callerid-entry > input").val()}; 
 	  } 
-    console.log('Params before call===>'+params);
+    console.log('Params before call===>'+JSON.stringify(params));
   Twilio.Device.connect(params);
 });
 
