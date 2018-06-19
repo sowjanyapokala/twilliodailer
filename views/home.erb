@@ -26,10 +26,9 @@ console.log("Salesforce Field: " + msg);
   setTimeout(function(){ 
 var url = new URL(window.location.href);
 var phoneNumber = url.searchParams.get("phoneNumber");
-alert(phoneNumber);
 var callerId = url.searchParams.get("CallerId");
-document.getElementById("phoneNumberInput").innerHTML = phoneNumber;
-document.getElementById("callerIdInput").innerHTML = callerId;
+document.getElementById("phoneNumberInput").value = phoneNumber;
+document.getElementById("callerIdInput").value = callerId;
 
 document.getElementById("callButton").click();
 },2000); 
