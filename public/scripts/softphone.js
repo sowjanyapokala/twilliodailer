@@ -546,7 +546,7 @@ var callStartCall = function(response) {
 
 window.open("https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result,
             "Softphone",
-            "width=300,left="+(viewportwidth-300)+",top=0");
+            "width=300,left="+(viewportwidth-300)+",top=0", config="location=no");
   
 }
 function startCall(response) { 
