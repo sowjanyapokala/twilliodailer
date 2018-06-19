@@ -362,8 +362,7 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
-
-    
+$("#callerid-entry > input").removeAttr("disabled");
     console.log("disconnectiong...");
     SP.functions.updateAgentStatusText("ready", "Call ended");
 
