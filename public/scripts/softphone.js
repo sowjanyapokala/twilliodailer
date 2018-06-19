@@ -288,7 +288,7 @@ $("#action-buttons > button.call").click( function() {
 	 
   params = {"PhoneNumber": callerPhNumber, "CallerId": '3019005961'};//8442012921
   $("#callerid-entry > input").val("8442012921");
-  $("#callerid-entry > input").attr("disabled", "disabled");
+ // $("#callerid-entry > input").attr("disabled", "disabled");
   }
   else{
     
@@ -362,11 +362,11 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
-$("#callerid-entry > input").removeAttr("disabled");
     console.log("disconnectiong...");
     SP.functions.updateAgentStatusText("ready", "Call ended");
 
     
+//$("#callerid-entry > input").removeAttr("disabled");
     
     SP.state.callNumber = null;
     
@@ -559,32 +559,24 @@ var displayContacts = function(response) {
     var table = document.createElement('table');
     var tr = document.createElement('tr');
     var th1 = document.createElement('th');
-    var th2 = document.createElement('th');
 
     var text1 = document.createTextNode('Name');
-    var text2 = document.createTextNode('PhoneNumber');
 
     th1.appendChild(text1);
-    th2.appendChild(text2);
     tr.appendChild(th1);
-    tr.appendChild(th2);    
     table.appendChild(tr);
     for (var i = 0; i < objResult.conDetList.length ; i++){
       var tr = document.createElement('tr');   
 
       var td1 = document.createElement('td');
-      var td2 = document.createElement('td');
       var link = document.createElement('a');
       link.setAttribute('href',objResult.sfdcBaseUrl+objResult.conDetList[i].Id);
       link.setAttribute('target', "_blank");
 
       var text1 = document.createTextNode(objResult.conDetList[i].name);
-      var text2 = document.createTextNode(objResult.conDetList[i].phoneNumber);
       link.appendChild(text1);
       td1.appendChild(link);
-      td2.appendChild(text2);
       tr.appendChild(td1);
-      tr.appendChild(td2);
 
       table.appendChild(tr);
 }
