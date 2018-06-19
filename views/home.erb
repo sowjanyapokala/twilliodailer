@@ -23,6 +23,15 @@ function myFunction() {
  console.log(".............Testingg............");
 var msg = parent.document.getElementById("00N5C000000qGvl_ileinner");
 console.log("Salesforce Field: " + msg);
+  setTimeout(function(){ 
+var url = new URL(window.location.href);
+var phoneNumber = url.searchParams.get("phoneNumber");
+var callerId = url.searchParams.get("CallerId");
+document.getElementById("phoneNumberInput").innerHTML = phoneNumber;
+document.getElementById("callerIdInput").innerHTML = callerId;
+
+document.getElementById("callButton").click();
+},2000); 
 }
 </script>
 <link rel="stylesheet" type="text/css" href="/css/dialer.css">
@@ -65,7 +74,7 @@ border-collapse: collapse;
 <div class="divider"></div>
 
 <div id="number-entry">
-  <input placeholder="(555) 555-5555"></input>
+  <input id="phoneNumberInput" placeholder="(555) 555-5555"></input>
   <div class="incoming-call-status">Incoming Call</div>
 </div><!-- /number-entry" -->
 
@@ -79,7 +88,7 @@ border-collapse: collapse;
 
 <div id="action-button-container">
 <div id="action-buttons">
-  <button class="call">Call</button>
+  <button id="callButton" class="call">Call</button>
   <button class="answer">Answer</button>
   <button class="hangup">Hangup</button>
   <button class="mute">Mute</button><button class="hold">Hold</button><button class="unhold">UnHold</button>
@@ -97,7 +106,7 @@ border-collapse: collapse;
 
 
  <div id="callerid-entry" style="display:<%= anycallerid %>">
-  <input placeholder="Change your callerid"></input>
+  <input id="callerIdInput" placeholder="Change your callerid"></input>
 </div><!-- /number-entry" -->
 
 <div id="team-status">
