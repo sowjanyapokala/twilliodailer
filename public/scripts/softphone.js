@@ -557,11 +557,12 @@ var displayContacts = function(response) {
     console.log(objResult.conDetList);
 
     var table = document.createElement('table');
+	table.style.width = "100%";
     var tr = document.createElement('tr');
     var th1 = document.createElement('th');
 
     var text1 = document.createTextNode('Name');
-
+text1.style.align = "center";
     th1.appendChild(text1);
     tr.appendChild(th1);
     table.appendChild(tr);
