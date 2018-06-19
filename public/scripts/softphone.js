@@ -544,8 +544,14 @@ var callStartCall = function(response) {
   window.resizeBy(-300,0);
   window.moveTo(0,0);
 
-window.open("https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result,"_new","directories=no, status=no, menubar=no, scrollbars=yes, resizable=no,width=600, height=280,top=0,left=200");
 
+var w = screen.width/2;
+                var h = screen.height/2;
+                var l = (screen.width/2)-(w/2);
+                var t = (screen.height/2)-(h/2);
+                var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
+                var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
+               var samlwin = window.open(url,'softphone',strWindowFeatures);
   
 }
 function startCall(response) { 
