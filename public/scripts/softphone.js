@@ -288,6 +288,7 @@ $("#action-buttons > button.call").click( function() {
 	 
   params = {"PhoneNumber": callerPhNumber, "CallerId": '3019005961'};//8442012921
   $("#callerid-entry > input").val() = "8442012921";
+  $("#callerid-entry > input").attr("disabled", "disabled");
   }
   else{
     
