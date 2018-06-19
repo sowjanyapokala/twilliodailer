@@ -572,6 +572,7 @@ var displayContacts = function(response) {
       var link = document.createElement('a');
       link.setAttribute('href',objResult.sfdcBaseUrl+objResult.conDetList[i].Id);
       link.setAttribute('target', "_blank");
+	  link.setAttribute("class", "anchorClass");
 
       var text1 = document.createTextNode(objResult.conDetList[i].name);
       link.appendChild(text1);
