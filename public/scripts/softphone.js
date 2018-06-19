@@ -2,7 +2,6 @@
 //added comment
 $(function() {
 
-windo
 // ** Application container ** //
 window.SP = {}
 
