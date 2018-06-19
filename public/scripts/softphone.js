@@ -287,6 +287,7 @@ $("#action-buttons > button.call").click( function() {
   if($("#callerid-entry > input").val() == null || $("#callerid-entry > input").val() == undefined || $("#callerid-entry > input").val() == ''){
 	 
   params = {"PhoneNumber": callerPhNumber, "CallerId": '3019005961'};//8442012921
+  $("#callerid-entry > input").val() = "8442012921";
   }
   else{
     
