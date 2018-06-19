@@ -539,7 +539,7 @@ var callStartCall = function(response) {
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
   //Open the popup window
-  window.open("https://twilioctiapp.herokuapp.com/home");
+  window.open("https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"CallerId="+response.result);
 }
 function startCall(response) { 
         
