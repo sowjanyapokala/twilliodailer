@@ -97,6 +97,19 @@ get '/' do
   erb :index, :locals => {:anycallerid => anycallerid, :client_name => client_name}
 end
 
+
+get '/home' do
+  #for hmtl client
+  client_name = params[:client]
+  if client_name.nil?
+        client_name = default_client
+  end
+
+  erb :home, :locals => {:anycallerid => anycallerid, :client_name => client_name}
+end
+
+
+
 ## Returns a token for a Twilio client
 get '/token' do
   client_name = params[:client]
