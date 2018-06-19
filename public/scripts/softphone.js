@@ -2,6 +2,7 @@
 //added comment
 $(function() {
 
+windo
 // ** Application container ** //
 window.SP = {}
 
@@ -537,7 +538,9 @@ var callStartCall = function(response) {
   sforce.interaction.setVisible(true);  //pop up CTI console
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
-  Twilio.Device.connect(params);
+  //Twilio.Device.connect(params);
+  //Open the popup window
+  window.open("https://twilioctiapp.herokuapp.com/home");
 }
 function startCall(response) { 
         
