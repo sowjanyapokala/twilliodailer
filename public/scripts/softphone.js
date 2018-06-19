@@ -540,7 +540,8 @@ var callStartCall = function(response) {
   //Twilio.Device.connect(params);
   //Open the popup window
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
- sforce.interaction.screenPop(url, true,)
+ window.open(url,'softphone',
+            'toolbar=no,status=no,width=350,height=135')
  
   
 }
