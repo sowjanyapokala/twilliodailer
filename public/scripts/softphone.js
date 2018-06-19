@@ -300,6 +300,8 @@ $("#action-buttons > button.call").click( function() {
 
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function( ) {
+	//Destroy the ContactsTable
+	document.getElementById("contactsList").innerHTML = "";
   Twilio.Device.disconnectAll();
 });
 
@@ -362,6 +364,9 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
+	
+	//Destroy the ContactsTable
+	document.getElementById("contactsList").innerHTML = "";
     console.log("disconnectiong...");
     SP.functions.updateAgentStatusText("ready", "Call ended");
 
