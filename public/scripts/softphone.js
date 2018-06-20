@@ -302,12 +302,13 @@ $("#action-buttons > button.hangup").click( function( ) {
 	
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
-	//Destroy the ContactsTable
+	///Destroy the ContactsTable
 	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
 	}
 	//Destroying the softphone window
-	//softphoneWindow.close();
+	if(softphoneWindow != null && softphoneWindow != undefined)
+	softphoneWindow.close();
   Twilio.Device.disconnectAll();
 });
 
