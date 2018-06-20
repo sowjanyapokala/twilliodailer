@@ -303,7 +303,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	//Destroy the ContactsTable
 	document.getElementById("contactsList").innerHTML = "";
 	//Destroying the softphone window
-	softphoneWindow.close();
+	//softphoneWindow.close();
   Twilio.Device.disconnectAll();
 });
 
@@ -370,7 +370,7 @@ Twilio.Device.disconnect(function (conn) {
 	//Destroy the ContactsTable
 	document.getElementById("contactsList").innerHTML = "";
 	//Destroying the softphone window
-	softphoneWindow.close();
+	//softphoneWindow.close();
     console.log("disconnectiong...");
     SP.functions.updateAgentStatusText("ready", "Call ended");
 
