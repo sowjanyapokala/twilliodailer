@@ -608,7 +608,7 @@ var displayContacts = function(response) {
 
       table.appendChild(tr);
 }
-console.log("contactList ==>"+document.getElementById('contactsList'));
+console.log("contactList ==>"+softphoneWindow.document.getElementById('contactsList'));
 document.getElementById('contactsList').appendChild(table);
   }
   
