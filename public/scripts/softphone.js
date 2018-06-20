@@ -306,7 +306,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	if(opener != null){
 		var oDom = opener.document;
 		elem = oDom.getElementById("contactsList");
-		softphoneWindow.close();
+		self.close();
 	}else{
 		elem = document.getElementById("contactsList");
 	}		
