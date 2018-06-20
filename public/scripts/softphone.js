@@ -542,7 +542,8 @@ var callStartCall = function(response) {
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
  var leftOffset = (screen.width/2) - 300/2;
   var topOffset = (screen.height/2) - 300/2;
-  window.open(url, this.target, 'left=' + leftOffset + ',top=' + topOffset + ',width=300,height=300',resizable,scrollbars=yes');
+  //window.open(url, this.target, 'left=' + leftOffset + ',top=' + topOffset + ',width=300,height=300',resizable,scrollbars=yes');
+  window.open(url, this.target);
  
   
 }
