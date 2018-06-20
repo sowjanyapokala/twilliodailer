@@ -543,7 +543,7 @@ var callStartCall = function(response) {
                 var l = (screen.width/2)-(w/2);
                 var t = (screen.height/2)-(h/2);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
-                var url = "https://www.w3schools.com" ;
+  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
    var samlwin = window.open(url,'SAML',strWindowFeatures);
    //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
