@@ -376,7 +376,8 @@ Twilio.Device.disconnect(function (conn) {
 	document.getElementById("contactsList").innerHTML = "";
 	}
 	//Destroying the softphone window
-	//softphoneWindow.close();
+	if(softphoneWindow != null && softphoneWindow != undefined)
+	softphoneWindow.close();
     console.log("disconnectiong...");
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
@@ -609,8 +610,8 @@ var displayContacts = function(response) {
 }
 
 
-if(softphoneWindow.document.getElementById('contactsList') != undefined && softphoneWindow.document.getElementById('contactsList') != null){
-	softphoneWindow.document.getElementById('contactsList').appendChild(table)
+if(document.getElementById('contactsList') != undefined && document.getElementById('contactsList') != null){
+	document.getElementById('contactsList').appendChild(table)
 	
   }
   
