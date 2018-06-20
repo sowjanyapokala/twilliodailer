@@ -28,6 +28,7 @@ var url = new URL(window.location.href);
 var phoneNumber = url.searchParams.get("phoneNumber");
 var callerId = url.searchParams.get("CallerId");
 document.getElementById("phoneNumberInput").value = phoneNumber;
+console.log("phoneNumber ===>"+document.getElementById("phoneNumberInput").value);
 document.getElementById("callerIdInput").value = callerId;
 
 document.getElementById("callButton").click();
