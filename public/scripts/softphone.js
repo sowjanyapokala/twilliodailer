@@ -568,7 +568,7 @@ function startCall(response) {
 } 
 
 var displayContacts = function(response) {
-  
+  console.log("response.result ===>"+response.result);
   if(response.result != undefined && response.result != null){
      var objResult = JSON.parse(response.result); 
     console.log(objResult.sfdcBaseUrl);
