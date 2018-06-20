@@ -538,7 +538,7 @@ var callStartCall = function(response) {
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
-  var w = 300;//screen.width/2;
+  var w = 200;//screen.width/2;
                 var h = 400;//screen.height/2;
                 var l = (screen.width/2)-(w/2);
                 var t = (screen.height/2)-(h/2);
