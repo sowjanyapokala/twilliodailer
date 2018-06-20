@@ -284,6 +284,7 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 $("#action-buttons > button.call").click( function() { 
   var callerPhNumber = "";
   callerPhNumber = cleanFormatting($("#number-entryIndex > input").val());
+  console.log("$("#number-entryIndex > input").val() ===>"+$("#number-entryIndex > input").val());
   if($("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == ''){
 	 
   params = {"PhoneNumber": callerPhNumber, "CallerId": '3019005961'};//8442012921
