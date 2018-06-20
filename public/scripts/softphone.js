@@ -544,8 +544,8 @@ var callStartCall = function(response) {
   //Twilio.Device.connect(params);
   var w = 200;//screen.width/2;
                 var h = 400;//screen.height/2;
-                var l = (screen.width)-(w-25);
-                var t = (screen.height)-(h-17);
+                var l = (screen.width)-(w-20);
+                var t = (screen.height)-(h-10);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
