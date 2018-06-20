@@ -614,7 +614,7 @@ if(softphoneWindow.document.getElementById('contactsList') != undefined && softp
   }
   
 }
-
+}
 var saveLogcallback = function (response) {
     if (response.result) {
       console.log("saveLog result =" + response.result);
