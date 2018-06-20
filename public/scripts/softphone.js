@@ -302,6 +302,8 @@ $("#action-buttons > button.call").click( function() {
 $("#action-buttons > button.hangup").click( function( ) {
 	//Destroy the ContactsTable
 	document.getElementById("contactsList").innerHTML = "";
+	//Destroying the softphone window
+	softphoneWindow.close();
   Twilio.Device.disconnectAll();
 });
 
@@ -367,6 +369,8 @@ Twilio.Device.disconnect(function (conn) {
 	
 	//Destroy the ContactsTable
 	document.getElementById("contactsList").innerHTML = "";
+	//Destroying the softphone window
+	softphoneWindow.close();
     console.log("disconnectiong...");
     SP.functions.updateAgentStatusText("ready", "Call ended");
 
@@ -528,6 +532,7 @@ function cleanFormatting(number) {
 
 var callerPhoneNumber ='';
 var callerObjectId = '';
+var softphoneWindow;
 var callStartCall = function(response) {
 
   //Setting the phone numbers and caller id in text box of softphone
@@ -545,7 +550,7 @@ var callStartCall = function(response) {
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
-   var samlwin = window.open(url,'Softphone',strWindowFeatures);
+   softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
    //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
