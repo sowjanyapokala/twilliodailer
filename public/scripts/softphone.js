@@ -12,7 +12,7 @@ SP.state.calltype = "";
 SP.username = $('#client_name').text();
 SP.currentCall = null;  //instance variable for tracking current connection
 SP.requestedHold = false; //set if agent requested hold button
-
+var softphoneWindow; //It holds the softphoneWindow Reference
 
 
 SP.functions = {};
@@ -532,7 +532,6 @@ function cleanFormatting(number) {
 
 var callerPhoneNumber ='';
 var callerObjectId = '';
-var softphoneWindow;
 var callStartCall = function(response) {
 
   //Setting the phone numbers and caller id in text box of softphone
