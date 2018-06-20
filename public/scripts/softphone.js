@@ -372,7 +372,7 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
-	
+	console.log("document.getElementById(contactsList) ===> "+document.getElementById("contactsList"));
 	///Destroy the ContactsTable
 	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
