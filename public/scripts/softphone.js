@@ -538,7 +538,11 @@ var callStartCall = function(response) {
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
-   window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
+  var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
+                var url = "https://www.w3schools.com" ;
+                
+   var samlwin = window.open(url,'SAML',strWindowFeatures);
+   //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
         
