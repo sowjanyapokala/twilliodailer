@@ -302,7 +302,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
-	console.log("document.getElementById("contactsList") ===> "+document.getElementById("contactsList"));
+	console.log("document.getElementById(contactsList) ===> "+document.getElementById("contactsList"));
 	///Destroy the ContactsTable
 	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
