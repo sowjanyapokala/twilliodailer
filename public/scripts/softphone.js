@@ -534,8 +534,10 @@ function cleanInboundTwilioNumber(number) {
 }
 
 function cleanFormatting(number) { 
-        //changes a SFDC formatted US number, which would be 415-555-1212       
+        //changes a SFDC formatted US number, which would be 415-555-1212
+		if(number != undefined && number != null)
         return number.replace(' ','').replace('-','').replace('(','').replace(')','').replace('+','');
+		return '';
     }
 
 
