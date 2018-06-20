@@ -301,8 +301,8 @@ $("#action-buttons > button.call").click( function() {
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function( ) {
 	
-	$("#callerid-entryIndex > input").val();
-	$("#number-entryIndex > input").val();
+	//$("#callerid-entryIndex > input").val();
+	//$("#number-entryIndex > input").val();
 	//Destroy the ContactsTable
 	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
@@ -371,8 +371,8 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
-	$("#callerid-entryIndex > input").val();
-	$("#number-entryIndex > input").val();
+	//$("#callerid-entryIndex > input").val();
+	//$("#number-entryIndex > input").val();
 	///Destroy the ContactsTable
 	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
