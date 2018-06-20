@@ -560,6 +560,7 @@ var callStartCall = function(response) {
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
    softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
+   console.log("startCall softphoneWindow ====>"+softphoneWindow );
    //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
