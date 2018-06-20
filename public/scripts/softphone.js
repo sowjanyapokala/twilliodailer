@@ -377,7 +377,7 @@ Twilio.Device.error(function (error) {
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
 	var oDom = opener.document;
-	
+	console.log('===oDom===='+oDom);
     var elem = oDom.getElementById("contactsList") != undefined  && oDom.getElementById("contactsList") != null ? oDom.getElementById("contactsList") : document.getElementById("contactsList");
 	
 	console.log("document.getElementById(contactsList) ===> "+elem);
