@@ -611,6 +611,7 @@ var displayContacts = function(response) {
 }
 console.log("softphoneWindow ====> "+softphoneWindow);
 console.log("softphone window contactList ====>"+softphoneWindow.document.getElementById('contactsList'));
+softphoneWindow.document.getElementById('contactsList').innerHTML = 'dszbgghvkkkkkkkkkkkkkkkkkkkkkkkkkkkk';
 if(softphoneWindow.document.getElementById('contactsList') != undefined && softphoneWindow.document.getElementById('contactsList') != null){
 	softphoneWindow.document.getElementById('contactsList').appendChild(table)
 	
