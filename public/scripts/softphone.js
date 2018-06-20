@@ -545,7 +545,7 @@ var callStartCall = function(response) {
   var w = 200;//screen.width/2;
                 var h = 400;//screen.height/2;
                 var l = (screen.width)-(w+10);
-                var t = (screen.height)-(h-10);
+                var t = (screen.height)-(h);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
