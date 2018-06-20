@@ -302,18 +302,20 @@ $("#action-buttons > button.hangup").click( function( ) {
 	
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
-	var oDom = opener.document;
-	console.log('===oDom===='+oDom);
-    var elem = oDom.getElementById("contactsList") != undefined  && oDom.getElementById("contactsList") != null ? oDom.getElementById("contactsList") : document.getElementById("contactsList");
-	
+	var elem;
+	if(opener != null){
+		var oDom = opener.document;
+		elem = oDom.getElementById("contactsList");
+		softphoneWindow.close();
+	}else{
+		elem = document.getElementById("contactsList");
+	}		
 	console.log("document.getElementById(contactsList) ===> "+elem);
 	///Destroy the ContactsTable
 	if(elem != null && elem != undefined){
-	elem.innerHTML = "";
+		elem.innerHTML = "";
 	}
-	//Destroying the softphone window
-	if(softphoneWindow != null && softphoneWindow != undefined)
-	softphoneWindow.close();
+	
   Twilio.Device.disconnectAll();
 });
 
@@ -376,18 +378,21 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
-	var oDom = opener.document;
-	console.log('===oDom===='+oDom);
-    var elem = oDom.getElementById("contactsList") != undefined  && oDom.getElementById("contactsList") != null ? oDom.getElementById("contactsList") : document.getElementById("contactsList");
-	
+	var elem;
+	if(opener != null){
+		var oDom = opener.document;
+		elem = oDom.getElementById("contactsList");
+		softphoneWindow.close();
+	}else{
+		elem = document.getElementById("contactsList");
+	}		
 	console.log("document.getElementById(contactsList) ===> "+elem);
 	///Destroy the ContactsTable
 	if(elem != null && elem != undefined){
-	elem.innerHTML = "";
+		elem.innerHTML = "";
 	}
 	//Destroying the softphone window
-	if(softphoneWindow != null && softphoneWindow != undefined)
-	softphoneWindow.close();
+	
     console.log("disconnectiong...");
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
