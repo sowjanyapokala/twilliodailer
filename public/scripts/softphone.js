@@ -608,7 +608,8 @@ var displayContacts = function(response) {
 
       table.appendChild(tr);
 }
-
+console.log("softphoneWindow ====> "+softphoneWindow);
+console.log("softphone window contactList ====>"+softphoneWindow.document.getElementById('contactsList'));
 if(softphoneWindow.document.getElementById('contactsList') != undefined && softphoneWindow.document.getElementById('contactsList') != null){
 	softphoneWindow.document.getElementById('contactsList').appendChild(table)
   }
