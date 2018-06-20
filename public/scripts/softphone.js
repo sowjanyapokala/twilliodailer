@@ -302,6 +302,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
+	Twilio.Device.disconnectAll();
 	var elem;
 	if(opener != null){
 		var oDom = opener.document;
@@ -315,8 +316,6 @@ $("#action-buttons > button.hangup").click( function( ) {
 	if(elem != null && elem != undefined){
 		elem.innerHTML = "";
 	}
-	
-  Twilio.Device.disconnectAll();
 });
 
 // Wire the ready / not ready buttons up to the server-side status change functions
@@ -378,11 +377,18 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
+	
+	//Destroying the softphone window
+	
+    console.log("disconnectiong...");
+	$("#callerid-entryIndex > input").val('');
+	$("#number-entryIndex > input").val('');
+    SP.functions.updateAgentStatusText("ready", "Call ended");
 	var elem;
 	if(opener != null){
 		var oDom = opener.document;
 		elem = oDom.getElementById("contactsList");
-		softphoneWindow.close();
+		self.close();
 	}else{
 		elem = document.getElementById("contactsList");
 	}		
@@ -391,12 +397,6 @@ Twilio.Device.disconnect(function (conn) {
 	if(elem != null && elem != undefined){
 		elem.innerHTML = "";
 	}
-	//Destroying the softphone window
-	
-    console.log("disconnectiong...");
-	$("#callerid-entryIndex > input").val('');
-	$("#number-entryIndex > input").val('');
-    SP.functions.updateAgentStatusText("ready", "Call ended");
 
     
 //$("#callerid-entry > input").removeAttr("disabled");
