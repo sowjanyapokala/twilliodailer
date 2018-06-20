@@ -369,8 +369,10 @@ Twilio.Device.error(function (error) {
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
 	
-	//Destroy the ContactsTable
+	///Destroy the ContactsTable
+	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
+	}
 	//Destroying the softphone window
 	//softphoneWindow.close();
     console.log("disconnectiong...");
