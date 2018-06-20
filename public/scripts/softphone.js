@@ -549,7 +549,7 @@ var callStartCall = function(response) {
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
-   softphoneWindow = window.open(url,'Softphone',strWindowFeatures,'_self');
+   softphoneWindow = window.open(url,'Softphone',strWindowFeatures,'_parent');
    //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
