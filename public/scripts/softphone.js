@@ -20,7 +20,7 @@ SP.functions = {};
     // Get a Twilio Client name and register with Twilio
 SP.functions.getTwilioClientName = function(sfdcResponse) {
     sforce.interaction.runApex('UserInfo', 'getUserName', '' , SP.functions.registerTwilioClient);
-}
+} 
 
 
 
@@ -538,14 +538,7 @@ var callStartCall = function(response) {
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
-  //Open the popup window
-  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
- var leftOffset = (screen.width/2) - 300/2;
-  var topOffset = (screen.height/2) - 300/2;
-  //window.open(url, this.target, 'left=' + leftOffset + ',top=' + topOffset + ',width=300,height=300',resizable,scrollbars=yes');
-  window.open(url, this.target);
- 
-  
+   window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
         
