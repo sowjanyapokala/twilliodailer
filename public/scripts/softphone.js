@@ -302,10 +302,14 @@ $("#action-buttons > button.hangup").click( function( ) {
 	
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
-	console.log("document.getElementById(contactsList) ===> "+document.getElementById("contactsList"));
+	var oDom = opener.document;
+	
+    var elem = oDom.getElementById("contactsList") != undefined  && oDom.getElementById("contactsList") != null ? oDom.getElementById("contactsList") : document.getElementById("contactsList");
+	
+	console.log("document.getElementById(contactsList) ===> "+elem);
 	///Destroy the ContactsTable
-	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
-	document.getElementById("contactsList").innerHTML = "";
+	if(elem != null && elem != undefined){
+	elem.innerHTML = "";
 	}
 	//Destroying the softphone window
 	if(softphoneWindow != null && softphoneWindow != undefined)
@@ -372,10 +376,14 @@ Twilio.Device.error(function (error) {
 
 /* Log a message when a call disconnects. */
 Twilio.Device.disconnect(function (conn) {
-	console.log("document.getElementById(contactsList) ===> "+document.getElementById("contactsList"));
+	var oDom = opener.document;
+	
+    var elem = oDom.getElementById("contactsList") != undefined  && oDom.getElementById("contactsList") != null ? oDom.getElementById("contactsList") : document.getElementById("contactsList");
+	
+	console.log("document.getElementById(contactsList) ===> "+elem);
 	///Destroy the ContactsTable
-	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
-	document.getElementById("contactsList").innerHTML = "";
+	if(elem != null && elem != undefined){
+	elem.innerHTML = "";
 	}
 	//Destroying the softphone window
 	if(softphoneWindow != null && softphoneWindow != undefined)
