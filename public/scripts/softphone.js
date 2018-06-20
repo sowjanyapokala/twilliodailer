@@ -303,7 +303,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
 	var oDom = opener.document;
-	
+	console.log('===oDom===='+oDom);
     var elem = oDom.getElementById("contactsList") != undefined  && oDom.getElementById("contactsList") != null ? oDom.getElementById("contactsList") : document.getElementById("contactsList");
 	
 	console.log("document.getElementById(contactsList) ===> "+elem);
