@@ -546,10 +546,10 @@ var callStartCall = function(response) {
                 var h = 400;//screen.height/2;
                 var l = (screen.width)-(w-10);
                 var t = (screen.height)-(h);
-  var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no,target=_self";
+  var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
-   softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
+   softphoneWindow = window.open(url,'Softphone',strWindowFeatures,'_self');
    //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
