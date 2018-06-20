@@ -538,6 +538,10 @@ var callStartCall = function(response) {
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
+  var w = screen.width/2;
+                var h = screen.height/2;
+                var l = (screen.width/2)-(w/2);
+                var t = (screen.height/2)-(h/2);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
                 var url = "https://www.w3schools.com" ;
                 
