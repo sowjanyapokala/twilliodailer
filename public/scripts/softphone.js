@@ -538,14 +538,14 @@ var callStartCall = function(response) {
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
-  var w = 300px;//screen.width/2;
-                var h = 400px;//screen.height/2;
+  var w = 300;//screen.width/2;
+                var h = 400;//screen.height/2;
                 var l = (screen.width/2)-(w/2);
                 var t = (screen.height/2)-(h/2);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
-   var samlwin = window.open(url,'SAML',strWindowFeatures);
+   var samlwin = window.open(url,'Softphone',strWindowFeatures);
    //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
 }
 function startCall(response) { 
@@ -559,7 +559,7 @@ function startCall(response) {
         if(objId.substr(0,3)== '003'){
           sforce.interaction.runApex('ContactsPhoneMatchService', 'getContactsPhoneMatch', 'conId='+objId+'&phoneNumber='+result.number, displayContacts);
         }
-        
+       console.log("objId ===>"+objId); 
         
 } 
 
