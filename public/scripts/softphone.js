@@ -560,8 +560,7 @@ var callStartCall = function(response) {
   var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
                 
    softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
-   console.log("startCall softphoneWindow ====>"+softphoneWindow );
-   //window.open("https://www.w3schools.com",'heigth=300,width=300,top=100,left=400');
+   softphoneWindow.document.getElementById('contactsList').innerHTML = 'dszbgghvkkkkkkkkkkkkkkkkkkkkkkkkkkkk';
 }
 function startCall(response) { 
         
@@ -611,7 +610,7 @@ var displayContacts = function(response) {
 }
 console.log("softphoneWindow ====> "+softphoneWindow);
 console.log("softphone window contactList ====>"+softphoneWindow.document.getElementById('contactsList'));
-softphoneWindow.document.getElementById('contactsList').innerHTML = 'dszbgghvkkkkkkkkkkkkkkkkkkkkkkkkkkkk';
+
 if(softphoneWindow.document.getElementById('contactsList') != undefined && softphoneWindow.document.getElementById('contactsList') != null){
 	softphoneWindow.document.getElementById('contactsList').appendChild(table)
 	
