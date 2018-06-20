@@ -578,7 +578,6 @@ function startCall(response) {
 } 
 
 var displayContacts = function(response) {
-  console.log("response.result ===>"+response.result);
   if(response.result != undefined && response.result != null){
      var objResult = JSON.parse(response.result); 
     console.log(objResult.sfdcBaseUrl);
@@ -609,6 +608,7 @@ var displayContacts = function(response) {
 
       table.appendChild(tr);
 }
+console.log("contactList ==>"+document.getElementById('contactsList'));
 document.getElementById('contactsList').appendChild(table);
   }
   
