@@ -301,7 +301,9 @@ $("#action-buttons > button.call").click( function() {
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function( ) {
 	//Destroy the ContactsTable
+	if(document.getElementById("contactsList") != null && document.getElementById("contactsList") != undefined){
 	document.getElementById("contactsList").innerHTML = "";
+	}
 	//Destroying the softphone window
 	//softphoneWindow.close();
   Twilio.Device.disconnectAll();
