@@ -288,7 +288,7 @@ $("#action-buttons > button.call").click( function() {
   if(document.getElementById('indexPagePhoneNumber') != null && document.getElementById('indexPagePhoneNumber') != undefined){
 
     callerPhoneNumber = cleanFormatting($("#number-entryIndex > input").val());
-    callerCallerId = $("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == '' ? '8442012921' :  $("#callerid-entryIndex > input").val(): 
+    callerCallerId = $("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == '' ? '8442012921' :  $("#callerid-entryIndex > input").val();
     $("#callerid-entryIndex > input").val(callerCallerId);
   }else{
 
