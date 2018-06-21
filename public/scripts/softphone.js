@@ -284,7 +284,7 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 $("#action-buttons > button.call").click( function() {
 
    var callerPhNumber = isCallerIdAvailable == true ?  $("#number-entryIndex > input").val() : $("#number-entry > input").val();
-   var dialerCallerId =  isCallerIdAvailable == true ?  $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921;
+   var dialerCallerId =  isCallerIdAvailable == true ?  $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921 : $("#number-entry > input").val();
 
   if(isCallerIdAvailable){
     $("#callerid-entryIndex > input").val(dialerCallerId);
