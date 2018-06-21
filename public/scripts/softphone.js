@@ -282,15 +282,15 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 
 // Call button will make an outbound call (click to dial) to the number entered 
 $("#action-buttons > button.call").click( function() {
-   var callerPhNumber = "";
-  callerPhNumber =  isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921;
+   var callerPhNumber = isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val();
+  var dialerCallerId =  isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921;
 
   if(isCallerIdAvailable){
-    $("#callerid-entryIndex > input").val(callerPhNumber);
+    $("#callerid-entryIndex > input").val(dialerCallerId);
   }else{
-     $("#callerid-entry > input").val(callerPhNumber);
+     $("#callerid-entry > input").val(dialerCallerId);
   }
-  
+  params = {"PhoneNumber": callerPhNumber, "CallerId": dialerCallerId};
   Twilio.Device.connect(params);
 });
 
