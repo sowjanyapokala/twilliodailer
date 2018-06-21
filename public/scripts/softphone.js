@@ -13,7 +13,6 @@ SP.username = $('#client_name').text();
 SP.currentCall = null;  //instance variable for tracking current connection
 SP.requestedHold = false; //set if agent requested hold button
 var softphoneWindow; //It holds the softphoneWindow Reference
-var isCallerIdAvailable = false;
 
 SP.functions = {};
 
@@ -282,25 +281,26 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 
 // Call button will make an outbound call (click to dial) to the number entered 
 $("#action-buttons > button.call").click( function() {
+var callerPhNumber = "";
+  callerPhNumber = cleanFormatting($("#number-entry > input").val() != undefined && $("#number-entry > input").val() != null ? $("#number-entry > input").val() : $("#number-entryIndex > input").val());
+  
 
-console.log('isCallerIdAvailable==>'+isCallerIdAvailable);
-   var callerPhNumber = isCallerIdAvailable == true ?  cleanFormatting($("#number-entry > input").val()) : cleanFormatting($("#number-entryIndex > input").val());
-   var dialerCallerId =  isCallerIdAvailable == true ?  $("#callerid-entry > input").val() : $("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == '' ? "8442012921" : $("#callerid-entryIndex > input").val();
-
-  if(isCallerIdAvailable){
-    $("#callerid-entry > input").val(dialerCallerId);
-  }else{
-     $("#callerid-entryIndex > input").val(dialerCallerId);
+  if($("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == ''){
+  params = {"PhoneNumber": callerPhNumber, "CallerId": '3019005961'};//8442012921
+  $("#callerid-entryIndex > input").val("8442012921");
+ // $("#callerid-entry > input").attr("disabled", "disabled");
   }
-  params = {"PhoneNumber": callerPhNumber, "CallerId": dialerCallerId};
-  console.log('Before calling Params===>'+JSON.stringify(params));
-  //Twilio.Device.connect(params);
+  else{
+    
+    params = {"PhoneNumber": callerPhNumber, "CallerId": $("#callerid-entry > input").val()}; 
+    } 
+    
+  Twilio.Device.connect(params);
 });
 
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function( ) {
 	
-  isCallerIdAvailable = false;
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
 	Twilio.Device.disconnectAll();
@@ -383,7 +383,6 @@ Twilio.Device.disconnect(function (conn) {
 	//Destroying the softphone window
 	
     console.log("disconnectiong...");
-    isCallerIdAvailable = false;
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
     SP.functions.updateAgentStatusText("ready", "Call ended");
@@ -586,8 +585,6 @@ function startCall(response) {
         callerPhoneNumber = cleanFormatting(result.number);
         var objId = result.objectId;
         callerObjectId = objId;
-        isCallerIdAvailable = true;
-        console.log('Setting to True');
         sforce.interaction.runApex('CallerIdRetrivalService', 'getCallerId', 'contactId='+objId , callStartCall);
 
         if(objId.substr(0,3)== '003'){
