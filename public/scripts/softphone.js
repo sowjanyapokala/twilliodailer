@@ -318,11 +318,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	if(elem != null && elem != undefined){
 		elem.innerHTML = "";
 	}
-  if(document.getElementById('indexPagePhoneNumber') == null || document.getElementById('indexPagePhoneNumber') == undefined){
-      
-      sforce.interaction.getPageInfo(saveLog);  
-    
-  }
+  
 
 });
 
@@ -426,10 +422,7 @@ Twilio.Device.disconnect(function (conn) {
     $("#number-entry > input").val(''); 
     $("#callerid-entry > input").val('');
     
-    if(document.getElementById('indexPagePhoneNumber') == null || document.getElementById('indexPagePhoneNumber') == undefined){
-      sforce.interaction.getPageInfo(saveLog);  
     
-  }
     
 });
 
