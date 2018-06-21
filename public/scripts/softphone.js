@@ -628,7 +628,8 @@ var displayContacts = function(response) {
 
 
 if(document.getElementById('contactsList') != undefined && document.getElementById('contactsList') != null){
-	document.getElementById('contactsList').appendChild(table)
+  document.getElementById('contactsList').innerHTML = '';
+	document.getElementById('contactsList').appendChild(table);
 	
   }
   
