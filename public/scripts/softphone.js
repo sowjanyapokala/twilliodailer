@@ -282,8 +282,9 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 
 // Call button will make an outbound call (click to dial) to the number entered 
 $("#action-buttons > button.call").click( function() {
+
    var callerPhNumber = isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val();
-  var dialerCallerId =  isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921;
+   var dialerCallerId =  isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921;
 
   if(isCallerIdAvailable){
     $("#callerid-entryIndex > input").val(dialerCallerId);
@@ -291,7 +292,8 @@ $("#action-buttons > button.call").click( function() {
      $("#callerid-entry > input").val(dialerCallerId);
   }
   params = {"PhoneNumber": callerPhNumber, "CallerId": dialerCallerId};
-  Twilio.Device.connect(params);
+  console.log('Before calling Params===>'+JSON.stringify(params));
+  //Twilio.Device.connect(params);
 });
 
 // Hang up button will hang up any active calls
