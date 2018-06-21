@@ -564,8 +564,8 @@ var callerObjectId = '';
 var callStartCall = function(response) {
 
   //Setting the phone numbers and caller id in text box of softphone
-  $("#number-entry > input").val(callerPhoneNumber); 
-  $("#callerid-entry > input").val(response.result != undefined && response.result != null ? response.result : 'un-available');
+  //$("#number-entryIndex > input").val(callerPhoneNumber); 
+  //$("#callerid-entryIndex > input").val(response.result != undefined && response.result != null ? response.result : 'un-available');
   //called onClick2dial
   sforce.interaction.setVisible(true);  //pop up CTI console
   var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
