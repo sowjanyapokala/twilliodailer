@@ -27,7 +27,6 @@ console.log("Salesforce Field: " + msg);
 var url = new URL(window.location.href);
 var phoneNumber = url.searchParams.get("phoneNumber");
 var callerId = url.searchParams.get("CallerId");
-console.log('CallerId in Home==>'+callerId);
 document.getElementById("phoneNumberInput").value = phoneNumber;
 document.getElementById("callerIdInput").value = callerId;
 

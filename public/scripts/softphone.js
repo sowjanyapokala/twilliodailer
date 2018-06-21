@@ -281,19 +281,16 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 }
 
 // Call button will make an outbound call (click to dial) to the number entered 
-$("#action-buttons > button.call").click( function() { 
-  var callerPhNumber = "";
-  callerPhNumber = cleanFormatting($("#number-entry > input").val() != undefined && $("#number-entry > input").val() != null ? $("#number-entry > input").val() : $("#number-entryIndex > input").val());
-  if($("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == ''){
-	params = {"PhoneNumber": callerPhNumber, "CallerId": '3019005961'};//8442012921
-  $("#callerid-entryIndex > input").val("8442012921");
- // $("#callerid-entry > input").attr("disabled", "disabled");
+$("#action-buttons > button.call").click( function() {
+   var callerPhNumber = "";
+  callerPhNumber =  isCallerIdAvailable == true ? : $("#number-entryIndex > input").val() : $("#number-entry > input").val() == null || $("#number-entry > input").val() == undefined || $("#number-entry > input").val() == '' ? 8442012921;
+
+  if(isCallerIdAvailable){
+    $("#callerid-entryIndex > input").val(callerPhNumber);
+  }else{
+     $("#callerid-entry > input").val(callerPhNumber);
   }
-  else{
-    
-	  params = {"PhoneNumber": callerPhNumber, "CallerId": $("#callerid-entry > input").val()}; 
-	  } 
-    
+  
   Twilio.Device.connect(params);
 });
 
