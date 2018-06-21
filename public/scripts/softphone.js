@@ -296,7 +296,7 @@ $("#action-buttons > button.call").click( function() {
     callerCallerId = $("#callerid-entry > input").val();
   }
   params = {"PhoneNumber": callerPhoneNumber, "CallerId": callerCallerId};
-  Twilio.Device.connect(params);
+  //Twilio.Device.connect(params);
 });
 
 // Hang up button will hang up any active calls
