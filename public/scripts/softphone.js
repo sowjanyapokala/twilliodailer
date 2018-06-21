@@ -293,7 +293,7 @@ $("#action-buttons > button.call").click( function() {
   }
   params = {"PhoneNumber": callerPhNumber, "CallerId": dialerCallerId};
   console.log('Before calling Params===>'+JSON.stringify(params));
-  //Twilio.Device.connect(params);
+  Twilio.Device.connect(params);
 });
 
 // Hang up button will hang up any active calls
