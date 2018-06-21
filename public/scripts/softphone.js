@@ -287,13 +287,13 @@ $("#action-buttons > button.call").click( function() {
    var dialerCallerId =  isCallerIdAvailable == true ?  $("#callerid-entry > input").val() : $("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == '' ? "8442012921" : $("#callerid-entryIndex > input").val();
 
   if(isCallerIdAvailable){
-    $("#callerid-entryIndex > input").val(dialerCallerId);
+    $("#callerid-entry > input").val(dialerCallerId);
   }else{
-     $("#callerid-entry > input").val(dialerCallerId);
+     $("#callerid-entryIndex > input").val(dialerCallerId);
   }
   params = {"PhoneNumber": callerPhNumber, "CallerId": dialerCallerId};
   console.log('Before calling Params===>'+JSON.stringify(params));
-  Twilio.Device.connect(params);
+  //Twilio.Device.connect(params);
 });
 
 // Hang up button will hang up any active calls
