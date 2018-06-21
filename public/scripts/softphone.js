@@ -321,7 +321,7 @@ $("#action-buttons > button.hangup").click( function( ) {
   if(document.getElementById('indexPagePhoneNumber') == null || document.getElementById('indexPagePhoneNumber') == undefined){
       
       sforce.interaction.getPageInfo(saveLog);  
-    }
+    
   }
 
 });
