@@ -283,6 +283,7 @@ SP.functions.updateAgentStatusText = function(statusCategory, statusText, inboun
 // Call button will make an outbound call (click to dial) to the number entered 
 $("#action-buttons > button.call").click( function() {
 
+console.log('isCallerIdAvailable==>'+isCallerIdAvailable);
    var callerPhNumber = isCallerIdAvailable == true ?  cleanFormatting($("#number-entry > input").val()) : cleanFormatting($("#number-entryIndex > input").val());
    var dialerCallerId =  isCallerIdAvailable == true ?  $("#callerid-entry > input").val() : $("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == '' ? "8442012921" : $("#callerid-entryIndex > input").val();
 
