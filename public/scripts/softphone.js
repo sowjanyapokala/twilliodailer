@@ -318,6 +318,11 @@ $("#action-buttons > button.hangup").click( function( ) {
 	if(elem != null && elem != undefined){
 		elem.innerHTML = "";
 	}
+  if(document.getElementById('indexPagePhoneNumber') == null || document.getElementById('indexPagePhoneNumber') == undefined){
+      if(SP.calltype == 'Outbound'){
+      sforce.interaction.getPageInfo(saveLog);  
+    }
+  }
 
 });
 
@@ -421,9 +426,11 @@ Twilio.Device.disconnect(function (conn) {
     $("#number-entry > input").val(''); 
     $("#callerid-entry > input").val('');
     
-    if(SP.calltype == 'Outbound'){
+    if(document.getElementById('indexPagePhoneNumber') == null || document.getElementById('indexPagePhoneNumber') == undefined){
+      if(SP.calltype == 'Outbound'){
       sforce.interaction.getPageInfo(saveLog);  
     }
+  }
     
 });
 
@@ -685,7 +692,7 @@ function saveLog(response) {
                     
         console.log("save params = " + JSON.stringify(saveParamsMap));
         
-        //sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
+        sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
         
 }
 
