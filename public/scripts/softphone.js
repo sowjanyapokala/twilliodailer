@@ -587,6 +587,7 @@ function startCall(response) {
         var objId = result.objectId;
         callerObjectId = objId;
         isCallerIdAvailable = true;
+        console.log('Setting to True');
         sforce.interaction.runApex('CallerIdRetrivalService', 'getCallerId', 'contactId='+objId , callStartCall);
 
         if(objId.substr(0,3)== '003'){
