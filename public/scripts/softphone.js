@@ -13,7 +13,7 @@ SP.username = $('#client_name').text();
 SP.currentCall = null;  //instance variable for tracking current connection
 SP.requestedHold = false; //set if agent requested hold button
 var softphoneWindow; //It holds the softphoneWindow Reference
-
+var isCallerIdAvailable = false;
 
 SP.functions = {};
 
@@ -300,6 +300,7 @@ $("#action-buttons > button.call").click( function() {
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function( ) {
 	
+  isCallerIdAvailable = false;
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
 	Twilio.Device.disconnectAll();
@@ -316,6 +317,7 @@ $("#action-buttons > button.hangup").click( function( ) {
 	if(elem != null && elem != undefined){
 		elem.innerHTML = "";
 	}
+
 });
 
 // Wire the ready / not ready buttons up to the server-side status change functions
@@ -381,6 +383,7 @@ Twilio.Device.disconnect(function (conn) {
 	//Destroying the softphone window
 	
     console.log("disconnectiong...");
+    isCallerIdAvailable = false;
 	$("#callerid-entryIndex > input").val('');
 	$("#number-entryIndex > input").val('');
     SP.functions.updateAgentStatusText("ready", "Call ended");
@@ -583,6 +586,7 @@ function startCall(response) {
         callerPhoneNumber = cleanFormatting(result.number);
         var objId = result.objectId;
         callerObjectId = objId;
+        isCallerIdAvailable = true;
         sforce.interaction.runApex('CallerIdRetrivalService', 'getCallerId', 'contactId='+objId , callStartCall);
 
         if(objId.substr(0,3)== '003'){
