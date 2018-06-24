@@ -30,9 +30,8 @@ var url = new URL(window.location.href);
 var phoneNumber = url.searchParams.get("phoneNumber");
 var callerId = url.searchParams.get("CallerId");
 document.getElementById("phoneNumberInput").value = phoneNumber;
-//document.getElementById("callerIdInput").value = callerId;
-
-//document.getElementById("callButton").click();
+document.getElementById("callerIdInput").value = callerId;
+document.getElementById("callButton").click();
 },2000); 
 }
 </script>
