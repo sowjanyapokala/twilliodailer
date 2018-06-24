@@ -18,16 +18,15 @@
 <script>
 
 window.onload = function() {
-  alert(document.getElementById("callerIdInput").value);
   myFunction();
 };
 
 function myFunction() {
 var msg = parent.document.getElementById("00N5C000000qGvl_ileinner");
 console.log("Salesforce Field: " + msg);
-alert(document.getElementById("callerIdInput").value);
-  setTimeout(function(){ 
-    alert(document.getElementById("callerIdInput").value);
+document.getElementById("callerIdInput").value = '';
+setTimeout(function(){ 
+document.getElementById("callerIdInput").value = '';
 var url = new URL(window.location.href);
 var phoneNumber = url.searchParams.get("phoneNumber");
 var callerId = url.searchParams.get("CallerId");
