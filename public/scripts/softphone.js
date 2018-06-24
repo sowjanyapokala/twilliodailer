@@ -562,7 +562,7 @@ var callerObjectId = '';
 var callStartCall = function(response) {
 
   sforce.interaction.setVisible(true);  //pop up CTI console
-  var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result == undefined ? '' : response.result};
+  var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result == 'undefined' ? '' : response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
   var w = 200;//screen.width/2;
@@ -570,7 +570,7 @@ var callStartCall = function(response) {
                 var l = (screen.width)-(w+40);
                 var t = (screen.height)-(h+110);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
-  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result == undefined ? '' : response.result;
+  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result == 'undefined' ? '' : response.result;
                 
    softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
 }
