@@ -287,13 +287,13 @@ $("#action-buttons > button.call").click( function() {
   
   if(document.getElementById('indexPagePhoneNumber') != null && document.getElementById('indexPagePhoneNumber') != undefined){
 
-    callerPhoneNumber = cleanFormatting($("#number-entryIndex > input").val());
-    callerCallerId = $("#callerid-entryIndex > input").val() == null || $("#callerid-entryIndex > input").val() == undefined || $("#callerid-entryIndex > input").val() == '' ? '8442012921' :  $("#callerid-entryIndex > input").val();
-    $("#callerid-entryIndex > input").val(callerCallerId);
+    callerPhoneNumber = cleanFormatting($("#number-entry > input").val());
+    callerCallerId = $("#callerid-entry > input").val() == null || $("#callerid-entry > input").val() == undefined || $("#callerid-entry > input").val() == '' ? '8442012921' :  $("#callerid-entry > input").val();
+    $("#callerid-entry > input").val(callerCallerId);
   }else{
 
-    callerPhoneNumber = cleanFormatting($("#number-entry > input").val());
-    callerCallerId = $("#callerid-entry > input").val();
+    callerPhoneNumber = cleanFormatting($("#number-entryHome > input").val());
+    callerCallerId = $("#callerid-entryHome > input").val();
   }
   params = {"PhoneNumber": callerPhoneNumber, "CallerId": callerCallerId};
   Twilio.Device.connect(params);
@@ -302,8 +302,8 @@ $("#action-buttons > button.call").click( function() {
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function( ) {
 	
-	$("#callerid-entryIndex > input").val('');
-	$("#number-entryIndex > input").val('');
+	$("#callerid-entry > input").val('');
+	$("#number-entry > input").val('');
 	Twilio.Device.disconnectAll();
 	var elem;
 	if(opener != null){
@@ -384,8 +384,8 @@ Twilio.Device.disconnect(function (conn) {
 	//Destroying the softphone window
 	
     console.log("disconnectiong...");
-	$("#callerid-entryIndex > input").val('');
-	$("#number-entryIndex > input").val('');
+	$("#callerid-entry > input").val('');
+	$("#number-entry > input").val('');
     SP.functions.updateAgentStatusText("ready", "Call ended");
 	var elem;
 	if(opener != null){
@@ -418,8 +418,8 @@ Twilio.Device.disconnect(function (conn) {
     SP.functions.hideCallData();
     SP.functions.ready();
     //Setting caller phone and caller id to null
-    $("#number-entry > input").val(''); 
-    $("#callerid-entry > input").val('');
+    $("#number-entryHome > input").val(''); 
+    $("#callerid-entryHome > input").val('');
     
     
     
