@@ -561,12 +561,8 @@ var callerPhoneNumber ='';
 var callerObjectId = '';
 var callStartCall = function(response) {
 
-  //Setting the phone numbers and caller id in text box of softphone
-  //$("#number-entryIndex > input").val(callerPhoneNumber); 
-  //$("#callerid-entryIndex > input").val(response.result != undefined && response.result != null ? response.result : 'un-available');
-  //called onClick2dial
   sforce.interaction.setVisible(true);  //pop up CTI console
-  var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
+  var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result == undefined ? '' : response.result};
   console.log('Params before calling connect()'+JSON.stringify(params));
   //Twilio.Device.connect(params);
   var w = 200;//screen.width/2;
@@ -574,7 +570,7 @@ var callStartCall = function(response) {
                 var l = (screen.width)-(w+40);
                 var t = (screen.height)-(h+110);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
-  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
+  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result == undefined ? '' : response.result;
                 
    softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
 }
@@ -589,7 +585,6 @@ function startCall(response) {
         if(objId.substr(0,3)== '003'){
           sforce.interaction.runApex('ContactsPhoneMatchService', 'getContactsPhoneMatch', 'conId='+objId+'&phoneNumber='+result.number, displayContacts);
         }
-       console.log("objId ===>"+objId); 
         
 } 
 
