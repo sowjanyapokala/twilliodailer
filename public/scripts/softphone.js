@@ -39,7 +39,7 @@ SP.functions.registerTwilioClient = function(response) {
   });
 
   $.get("/getcallerid", { "from":SP.username}, function(data) {
-    $("#callerid-entry > input").val(data);
+    //$("#callerid-entry > input").val(data);
   });
 
   SP.functions.startWebSocket();
@@ -313,7 +313,6 @@ $("#action-buttons > button.hangup").click( function( ) {
 	}else{
 		elem = document.getElementById("contactsList");
 	}		
-	console.log("document.getElementById(contactsList) ===> "+elem);
 	///Destroy the ContactsTable
 	if(elem != null && elem != undefined){
 		elem.innerHTML = "";
