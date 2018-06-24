@@ -105,7 +105,7 @@ get '/home' do
         client_name = default_client
   end
 
-  erb :home, :locals => {:anycallerid => anycallerid, :client_name => client_name}
+  erb :home, :locals => {:anycallerid => '', :client_name => client_name}
 end
 
 
