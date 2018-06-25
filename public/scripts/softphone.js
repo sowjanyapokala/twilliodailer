@@ -303,7 +303,6 @@ Twilio.Device.connect(params);
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function() {
 
-sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap=Test', saveLogcallback);
 
 $("#callerid-entry > input").val('');
 $("#number-entry > input").val('');
@@ -390,14 +389,7 @@ Twilio.Device.disconnect(function (conn) {
 console.log("disconnectiong...");
 $("#callerid-entry > input").val('');
 $("#number-entry > input").val('');
-//Call save logs method
-if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
-var saveLogData = {};
-saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
-saveLogData['callerId'] = document.getElementById("callerIdInput").value;
-saveLogData['objectId'] = document.getElementById("objectId").value;  
-//saveLog(saveLogData);
-}
+
 SP.functions.updateAgentStatusText("ready", "Call ended");
 var elem;
 if(opener != null){
@@ -452,7 +444,13 @@ SP.calltype = "Inbound";
 } else {
 status = "Outbound call";
 SP.calltype = "Outbound";
-
+if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
+var saveLogData = {};
+saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
+saveLogData['callerId'] = document.getElementById("callerIdInput").value;
+saveLogData['objectId'] = document.getElementById("objectId").value;  
+saveLog(saveLogData);
+}
 }
 
 console.dir(conn);
@@ -689,7 +687,7 @@ saveParamsMap['whatId'] = result.objectId == undefined || result.objectId == nul
 }
 
 console.log("save params = " + JSON.stringify(saveParamsMap));
-//sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
+sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
 }
 
 });
