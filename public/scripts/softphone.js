@@ -449,8 +449,7 @@ var saveLogData = {};
 saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
 saveLogData['objectId'] = document.getElementById("objectId").value;  
-alert('Before calling save()');
-saveLog(saveLogData);
+sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveLogData), saveLogcallback);
 }
 }
 
