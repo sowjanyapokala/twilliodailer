@@ -310,7 +310,7 @@ var saveLogData = {};
 saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
 saveLogData['objectId'] = document.getElementById("objectId").value;  
-saveLog(saveLogData);
+//saveLog(saveLogData);
 
 }
 Twilio.Device.disconnectAll();
@@ -403,7 +403,7 @@ var saveLogData = {};
 saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
 saveLogData['objectId'] = document.getElementById("objectId").value;  
-saveLog(saveLogData);
+//saveLog(saveLogData);
 
 }
 SP.functions.updateAgentStatusText("ready", "Call ended");
