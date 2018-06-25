@@ -300,6 +300,8 @@ Twilio.Device.connect(params);
 
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function() {
+	force.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap=test', saveLogcallback);
+
 
 $("#callerid-entry > input").val('');
 $("#number-entry > input").val('');
@@ -393,7 +395,6 @@ saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
 saveLogData['objectId'] = document.getElementById("objectId").value;  
 //saveLog(saveLogData);
-force.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveLogData), saveLogcallback);
 }
 SP.functions.updateAgentStatusText("ready", "Call ended");
 var elem;
