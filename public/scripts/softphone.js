@@ -392,7 +392,7 @@ var saveLogData = {};
 saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
 saveLogData['objectId'] = document.getElementById("objectId").value;  
-saveLog(saveLogData);
+//saveLog(saveLogData);
 
 }
 SP.functions.updateAgentStatusText("ready", "Call ended");
@@ -685,8 +685,7 @@ saveParamsMap['whatId'] = result.objectId == undefined || result.objectId == nul
 }
 
 console.log("save params = " + JSON.stringify(saveParamsMap));
-sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
-alert('After calling apex yyyyy');
+//sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
 }
 
 });
