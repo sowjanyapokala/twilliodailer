@@ -89,6 +89,7 @@ logger.info("Starting up.. configuration complete")
 ### Returns HTML for softphone -- see html in /views/index.rb
 get '/' do
   #for hmtl client
+  
   client_name = params[:client]
   if client_name.nil?
         client_name = default_client
