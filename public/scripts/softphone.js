@@ -393,7 +393,7 @@ saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
 saveLogData['objectId'] = document.getElementById("objectId").value;  
 //saveLog(saveLogData);
-
+force.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveLogData), saveLogcallback);
 }
 SP.functions.updateAgentStatusText("ready", "Call ended");
 var elem;
