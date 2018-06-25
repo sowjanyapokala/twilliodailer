@@ -299,7 +299,7 @@ $("#action-buttons > button.call").click( function() {
 });
 
 // Hang up button will hang up any active calls
-$("#action-buttons > button.hangup").click( function( ) {
+$("#action-buttons > button.hangup").click( function() {
 	
 	$("#callerid-entry > input").val('');
 	$("#number-entry > input").val('');
@@ -317,6 +317,11 @@ $("#action-buttons > button.hangup").click( function( ) {
 		elem.innerHTML = "";
 	}
   
+  //Call save logs method
+  if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
+    alert('Hello');
+
+  }
 
 });
 
@@ -401,7 +406,6 @@ Twilio.Device.disconnect(function (conn) {
 	}
 
     
-//$("#callerid-entry > input").removeAttr("disabled");
     
     SP.state.callNumber = null;
     
@@ -639,9 +643,8 @@ var saveLogcallback = function (response) {
 
 function saveLog(response) {
         
-        console.log('Call Log Response=>'+JSON.stringify(response));
-        console.log("saving log result, response:");
-        var result = JSON.parse(response.result);
+       
+        var result = JSON.parse(response);
 
         console.log(response.result);
         
@@ -678,7 +681,7 @@ function saveLog(response) {
                     
         console.log("save params = " + JSON.stringify(saveParamsMap));
         
-        sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
+        //sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
         
 }
 
