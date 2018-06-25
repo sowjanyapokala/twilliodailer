@@ -387,16 +387,7 @@ Twilio.Device.disconnect(function (conn) {
 console.log("disconnectiong...");
 $("#callerid-entry > input").val('');
 $("#number-entry > input").val('');
-//Call save logs method
-if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
 
-var saveLogData = {};
-saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
-saveLogData['callerId'] = document.getElementById("callerIdInput").value;
-saveLogData['objectId'] = document.getElementById("objectId").value;  
-saveLog(JSON.stringify(saveLogData));
-
-}
 SP.functions.updateAgentStatusText("ready", "Call ended");
 var elem;
 if(opener != null){
@@ -575,6 +566,16 @@ sforce.interaction.setVisible(true);  //pop up CTI console
 var  params = {"PhoneNumber": callerPhoneNumber, "CallerId": response.result};
 console.log('Params before calling connect()'+JSON.stringify(params));
 //Twilio.Device.connect(params);
+//Generate Call logs
+if(response.result != ' ' && response.result != null && response.result != undefined){
+
+ar saveLogData = {};
+saveLogData['phoneNumber'] = callerPhoneNumber;
+saveLogData['callerId'] = response.result;
+saveLogData['objectId'] = callerObjectId;  
+saveLog(JSON.stringify(saveLogData));
+}
+
 var w = 200;//screen.width/2;
 var h = 400;//screen.height/2;
 var l = (screen.width)-(w+40);
