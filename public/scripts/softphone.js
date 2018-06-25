@@ -569,7 +569,7 @@ console.log('Params before calling connect()'+JSON.stringify(params));
 //Generate Call logs
 if(response.result != ' ' && response.result != null && response.result != undefined){
 
-ar saveLogData = {};
+var saveLogData = {};
 saveLogData['phoneNumber'] = callerPhoneNumber;
 saveLogData['callerId'] = response.result;
 saveLogData['objectId'] = callerObjectId;  
