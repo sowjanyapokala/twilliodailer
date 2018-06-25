@@ -638,6 +638,8 @@ document.getElementById('contactsList').appendChild(table);
 }
 }
 var saveLogcallback = function (response) {
+	alert('Apex Method fineshes');
+
 if (response.result) {
 console.log("saveLog result =" + response.result);
 } else {
@@ -684,7 +686,6 @@ saveParamsMap['whatId'] = result.objectId == undefined || result.objectId == nul
 }
 
 console.log("save params = " + JSON.stringify(saveParamsMap));
-alert('Before calling Apex Method()');
 sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
 
 }
