@@ -398,7 +398,7 @@ $("#callerid-entry > input").val('');
 $("#number-entry > input").val('');
 //Call save logs method
 if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
-
+alert('In disconnect');
 var saveLogData = {};
 saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
 saveLogData['callerId'] = document.getElementById("callerIdInput").value;
