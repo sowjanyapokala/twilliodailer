@@ -660,7 +660,7 @@ console.log("saveLog error = " + response.error);
 function saveLog(response) {
 
 
-var result = JSON.parse(response);
+var result = response;
 
 console.log(response);
 
