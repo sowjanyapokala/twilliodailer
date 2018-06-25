@@ -320,7 +320,7 @@ $("#action-buttons > button.hangup").click( function() {
   //Call save logs method
   if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
 
-
+      alert();
   }
 
 });
