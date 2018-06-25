@@ -319,7 +319,7 @@ $("#action-buttons > button.hangup").click( function() {
   
   //Call save logs method
   if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
-    alert('Hello');
+
 
   }
 
@@ -573,7 +573,7 @@ var callStartCall = function(response) {
                 var l = (screen.width)-(w+40);
                 var t = (screen.height)-(h+110);
   var strWindowFeatures = "top="+t+",left="+l+",width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
-  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result;
+  var url = "https://twilioctiapp.herokuapp.com/home?phoneNumber="+callerPhoneNumber+"&CallerId="+response.result'&objId='+callerObjectId;
                 
    softphoneWindow = window.open(url,'Softphone',strWindowFeatures);
 }
