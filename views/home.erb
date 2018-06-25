@@ -18,7 +18,7 @@
 <script>
 
 window.onload = function() {
-  myFunction();
+myFunction();
 };
 
 function myFunction() {
@@ -29,8 +29,10 @@ setTimeout(function(){
 var url = new URL(window.location.href);
 var phoneNumber = url.searchParams.get("phoneNumber");
 var callerId = url.searchParams.get("CallerId");
+var objectId = url.searchParams.get("objId");
 document.getElementById("phoneNumberInput").value = phoneNumber;
 document.getElementById("callerIdInput").value = callerId;
+document.getElementById("objectId").value = objectId;
 document.getElementById("callButton").click();
 },2000); 
 }
@@ -65,57 +67,58 @@ border-collapse: collapse;
 <div id="softphone" class="softphone">
 
 <div id="agent-status-controls" class="clearfix">
-  <button class="agent-status ready">Ready</button><button class="agent-status not-ready">Not Ready</button><div class="agent-status active">Call In-Progress</div>
+<button class="agent-status ready">Ready</button><button class="agent-status not-ready">Not Ready</button><div class="agent-status active">Call In-Progress</div>
 </div><!-- /agent-status -->
 
 <div id="agent-status">
-  <p></p>
+<p></p>
 </div><!-- /agent-status -->
 
 <div class="divider"></div>
 
 <div id="number-entryHome">
-  <input id="phoneNumberInput" placeholder="(555) 555-5555"></input>
-  <div class="incoming-call-status">Incoming Call</div>
+<input id="phoneNumberInput" placeholder="(555) 555-5555"></input>
+<div class="incoming-call-status">Incoming Call</div>
 </div><!-- /number-entry" -->
 
 <div id="dialer">
-  <div id="dialer-container">
-    <div class="numpad-container">
-      <div class="number" value="1">1</div><div class="number" value="2">2</div><div class="number" value="3">3</div><div class="number" value="4">4</div><div class="number" value="5">5</div><div class="number" value="6">6</div><div class="number" value="7">7</div><div class="number" value="8">8</div><div class="number" value="9">9</div><div class="number ast" value="*">&lowast;</div><div class="number" value="0">0</div><div class="number" value="#">#</div>
-    </div><!-- /numpad-container -->
-  </div><!-- /dialer-container -->
+<div id="dialer-container">
+<div class="numpad-container">
+<div class="number" value="1">1</div><div class="number" value="2">2</div><div class="number" value="3">3</div><div class="number" value="4">4</div><div class="number" value="5">5</div><div class="number" value="6">6</div><div class="number" value="7">7</div><div class="number" value="8">8</div><div class="number" value="9">9</div><div class="number ast" value="*">&lowast;</div><div class="number" value="0">0</div><div class="number" value="#">#</div>
+</div><!-- /numpad-container -->
+</div><!-- /dialer-container -->
 </div><!-- /dialer -->
 
 <div id="action-button-container">
 <div id="action-buttons">
-  <button id="callButton" class="call">Call</button>
-  <button class="answer">Answer</button>
-  <button class="hangup">Hangup</button>
-  <button class="mute">Mute</button><button class="hold">Hold</button><button class="unhold">UnHold</button>
-  <button class="voicemail">VoiceMail Drop</button>
+<button id="callButton" class="call">Call</button>
+<button class="answer">Answer</button>
+<button class="hangup">Hangup</button>
+<button class="mute">Mute</button><button class="hold">Hold</button><button class="unhold">UnHold</button>
+<button class="voicemail">VoiceMail Drop</button>
 </div><!-- /action-buttons voicemail -->
 </div><!---action-button-containe -->
 
 <div id="call-data">
-  <h3>Caller info</h3>
-  <ul class="name"><strong>Name: </strong><span class="caller-name"></span></ul>
-  <ul class="phone_number"><strong>Number: </strong><span class="caller-number"></span></ul>
-  <ul class="queue"><strong>Queue: </strong><span class="caller-queue"></span></ul>
-  <ul class="message"><strong>Message: </strong><span class="caller-message"></span></ul>
+<h3>Caller info</h3>
+<ul class="name"><strong>Name: </strong><span class="caller-name"></span></ul>
+<ul class="phone_number"><strong>Number: </strong><span class="caller-number"></span></ul>
+<ul class="queue"><strong>Queue: </strong><span class="caller-queue"></span></ul>
+<ul class="message"><strong>Message: </strong><span class="caller-message"></span></ul>
 </div><!-- /call-data -->
 
 
- <div id="callerid-entryHome" style="display:<%= anycallerid %>">
-  <input id="callerIdInput" placeholder="Change your callerid" value=""></input>
+<div id="callerid-entryHome" style="display:<%= anycallerid %>">
+<input id="callerIdInput" placeholder="Change your callerid" value=""></input>
 </div><!-- /number-entry" -->
 
 <div id="team-status">
-  <div class="agents-status"><div class="agents-num">-</div>Agents</div><div class="queues-status"><div class="queues-num">-</div>In-Queue</div>
+<div class="agents-status"><div class="agents-num">-</div>Agents</div><div class="queues-status"><div class="queues-num">-</div>In-Queue</div>
 </div><!-- /team-status -->
 <div class="powered-by">
-  <img src="/poweredby.png" />
+<img src="/poweredby.png" />
 </div>
+<input type="hidden" id="objectId" value="">
 
 </div><!-- /softphone -->
 </body>
