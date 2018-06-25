@@ -298,19 +298,12 @@ params = {"PhoneNumber": callerPhoneNumber, "CallerId": callerCallerId};
 Twilio.Device.connect(params);
 });
 
-var saveLogcallback = function (response) {
 
-if (response.result) {
-console.log("saveLog result =" + response.result);
-} else {
-console.log("saveLog error = " + response.error);
-}
-};
 
 // Hang up button will hang up any active calls
 $("#action-buttons > button.hangup").click( function() {
-	force.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap=test', saveLogcallback);
 
+sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap=Test', saveLogcallback);
 
 $("#callerid-entry > input").val('');
 $("#number-entry > input").val('');
@@ -648,6 +641,14 @@ document.getElementById('contactsList').appendChild(table);
 }
 }
 
+var saveLogcallback = function (response) {
+
+if (response.result) {
+console.log("saveLog result =" + response.result);
+} else {
+console.log("saveLog error = " + response.error);
+}
+};
 
 
 function saveLog(response) {
