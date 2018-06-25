@@ -695,7 +695,7 @@ saveParamsMap['whatId'] = result.objectId == undefined || result.objectId == nul
 }
 
 console.log("save params = " + JSON.stringify(saveParamsMap));
-alert('Before calling Apex Method()');
+
 sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap='+JSON.stringify(saveParamsMap), saveLogcallback);
 
 }
