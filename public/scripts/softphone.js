@@ -444,6 +444,8 @@ SP.calltype = "Inbound";
 } else {
 status = "Outbound call";
 SP.calltype = "Outbound";
+sforce.interaction.runApex('CallerTasklogService', 'generateCallLog', 'logParamsMap=Test', saveLogcallback);
+
 if(document.getElementById("phoneNumberInput") != undefined && document.getElementById("phoneNumberInput") != null){
 var saveLogData = {};
 saveLogData['phoneNumber'] = document.getElementById("phoneNumberInput").value;
